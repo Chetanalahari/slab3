@@ -1,0 +1,449 @@
+VERSION {1.0}
+PTDEF {instance} {pin} {cell} {edge} {clock_edge} {clock} {phase}
+BANNER
+  {Module} {ORCA_TOP}
+  {Timing} {LATE}
+  {Slew Propagation} {WORST}
+  {Operating Condition} {saed32hvt_ss0p75vn40c/%NOM_PVT}
+  {PVT Mode} {max}
+  {Tree Type} {worst_case}
+  {Process} {0.990}
+  {Voltage} {0.750}
+  {Temperature} {-40.000}
+  {time unit} {1.000 ns}
+  {capacitance unit} {1.000 fF}
+  {resistance unit} {1.000 MOhm}
+  {TOOL} {v19.16-s053_1 ((64bit) 08/31/2020 13:16 (Linux 2.6.32-431.11.2.el6.x86_64))}
+  {DATE} {April 25, 2023}
+END_BANNER
+PATH 1
+  VIEW  func_worst_scenario
+  CHECK_TYPE {Late External Delay Assertion}
+  REF {} {}
+  ENDPT {} {sd_DQ_out[22]} {} {^} {trailing} {SD_DDR_CLK} {SD_DDR_CLK(C)(P)(func_worst_scenario)*}
+  BEGINPT {} {sdram_clk} {} {^} {leading} {SDRAM_CLK} {SDRAM_CLK(D)(P)(func_worst_scenario)*}
+  REQ_CLC
+    {} {Other End Arrival Time} {2.050}
+    {-} {External Delay} {0.750}
+    {+} {Phase Shift} {0.000}
+    {-} {Uncertainty} {30.000}
+    {=} {Required Time} {-28.700}
+  END_REQ_CLC
+  SLK_CLC
+    {-} {Arrival Time} {1.465}
+    {=} {Slack Time} {-30.165}
+  END_SLK_CLC
+  SLK -30.165
+  ARR_CLC
+    {} {Clock Rise Edge} {0.000}
+    {+} {Drive Adjustment} {0.009}
+    {=} {Beginpoint Arrival Time} {0.009}
+  END_ARR_CLC
+  LAUNCH_CLK_PATH
+    COLUMNS {instance} {fpin} {fedge} {tpin} {tedge} {net} {cell} {delay} {incr_delay} {slew} {load} {arrival} {required} {stolen} {fanout} {pin_location}
+  END_LAUNCH_CLK_PATH 
+  DATA_PATH 
+    COLUMNS {instance} {fpin} {fedge} {tpin} {tedge} {net} {cell} {delay} {incr_delay} {slew} {load} {arrival} {required} {stolen} {fanout} {pin_location} 
+    PORT {} {sdram_clk} {^} {} {} {sdram_clk} {} {} {} {0.021} {12.964} {0.009} {-30.155} {} {9} {(380.00, 0.00) } 
+    NET {} {} {} {} {} {sdram_clk} {} {0.002} {0.000} {0.200} {12.964} {0.011} {-30.153} {} {} {} 
+    INST {occ_int2/fast_clk_1_clkgt/u_icg} {CLK} {^} {GCLK} {^} {} {CGLNPRX2_LVT} {0.240} {0.000} {0.035} {} {0.251} {-29.913} {} {1} {(361.00, 15.20) (358.42, 15.50)} 
+    NET {} {} {} {} {} {occ_int2/n8} {} {0.002} {0.000} {0.003} {0.774} {0.254} {-29.911} {} {} {} 
+    INST {occ_int2/U2} {A1} {^} {Y} {^} {} {AO21X2_HVT} {0.567} {0.000} {0.281} {} {0.821} {-29.344} {} {203} {(357.35, 15.96) (356.90, 15.81)} 
+    NET {} {} {} {} {} {sd_CK} {} {0.002} {0.000} {0.003} {297.829} {0.823} {-29.341} {} {} {} 
+    INST {I_SDRAM_TOP/I_SDRAM_IF/U13017} {A1} {^} {Y} {^} {} {AO22X1_HVT} {0.437} {0.000} {0.175} {} {1.260} {-28.905} {} {1} {(400.37, 251.71) (399.46, 252.32)} 
+    NET {} {} {} {} {} {I_SDRAM_TOP/I_SDRAM_IF/n11082} {} {0.002} {0.000} {0.003} {9.631} {1.262} {-28.902} {} {} {} 
+    INST {I_SDRAM_TOP/I_SDRAM_IF/U831} {A} {^} {Y} {^} {} {NBUFFX4_HVT} {0.200} {0.000} {0.133} {} {1.462} {-28.702} {} {1} {(396.72, 174.80) (396.42, 175.41)} 
+    NET {} {} {} {} {} {sd_DQ_out[22]} {} {0.002} {0.000} {0.003} {30.746} {1.465} {-28.700} {} {} {} 
+  END_DATA_PATH
+  CAP_CLK_PATH
+    COLUMNS {instance} {fpin} {fedge} {tpin} {tedge} {net} {cell} {delay} {incr_delay} {slew} {load} {arrival} {required} {stolen} {fanout} {pin_location}
+  END_CAP_CLK_PATH
+END_PATH 1
+PATH 2
+  VIEW  func_worst_scenario
+  CHECK_TYPE {Late External Delay Assertion}
+  REF {} {}
+  ENDPT {} {sd_DQ_out[23]} {} {^} {trailing} {SD_DDR_CLK} {SD_DDR_CLK(C)(P)(func_worst_scenario)*}
+  BEGINPT {} {sdram_clk} {} {^} {leading} {SDRAM_CLK} {SDRAM_CLK(D)(P)(func_worst_scenario)*}
+  REQ_CLC
+    {} {Other End Arrival Time} {2.050}
+    {-} {External Delay} {0.750}
+    {+} {Phase Shift} {0.000}
+    {-} {Uncertainty} {30.000}
+    {=} {Required Time} {-28.700}
+  END_REQ_CLC
+  SLK_CLC
+    {-} {Arrival Time} {1.465}
+    {=} {Slack Time} {-30.165}
+  END_SLK_CLC
+  SLK -30.165
+  ARR_CLC
+    {} {Clock Rise Edge} {0.000}
+    {+} {Drive Adjustment} {0.009}
+    {=} {Beginpoint Arrival Time} {0.009}
+  END_ARR_CLC
+  LAUNCH_CLK_PATH
+    COLUMNS {instance} {fpin} {fedge} {tpin} {tedge} {net} {cell} {delay} {incr_delay} {slew} {load} {arrival} {required} {stolen} {fanout} {pin_location}
+  END_LAUNCH_CLK_PATH 
+  DATA_PATH 
+    COLUMNS {instance} {fpin} {fedge} {tpin} {tedge} {net} {cell} {delay} {incr_delay} {slew} {load} {arrival} {required} {stolen} {fanout} {pin_location} 
+    PORT {} {sdram_clk} {^} {} {} {sdram_clk} {} {} {} {0.021} {12.964} {0.009} {-30.155} {} {9} {(380.00, 0.00) } 
+    NET {} {} {} {} {} {sdram_clk} {} {0.002} {0.000} {0.200} {12.964} {0.011} {-30.153} {} {} {} 
+    INST {occ_int2/fast_clk_1_clkgt/u_icg} {CLK} {^} {GCLK} {^} {} {CGLNPRX2_LVT} {0.240} {0.000} {0.035} {} {0.251} {-29.913} {} {1} {(361.00, 15.20) (358.42, 15.50)} 
+    NET {} {} {} {} {} {occ_int2/n8} {} {0.002} {0.000} {0.003} {0.774} {0.254} {-29.911} {} {} {} 
+    INST {occ_int2/U2} {A1} {^} {Y} {^} {} {AO21X2_HVT} {0.567} {0.000} {0.281} {} {0.821} {-29.344} {} {203} {(357.35, 15.96) (356.90, 15.81)} 
+    NET {} {} {} {} {} {sd_CK} {} {0.002} {0.000} {0.003} {297.829} {0.823} {-29.341} {} {} {} 
+    INST {I_SDRAM_TOP/I_SDRAM_IF/U13016} {A1} {^} {Y} {^} {} {AO22X1_HVT} {0.437} {0.000} {0.175} {} {1.260} {-28.905} {} {1} {(396.26, 241.68) (395.35, 242.29)} 
+    NET {} {} {} {} {} {I_SDRAM_TOP/I_SDRAM_IF/n11081} {} {0.002} {0.000} {0.003} {8.255} {1.262} {-28.902} {} {} {} 
+    INST {I_SDRAM_TOP/I_SDRAM_IF/U833} {A} {^} {Y} {^} {} {NBUFFX4_HVT} {0.200} {0.000} {0.133} {} {1.462} {-28.702} {} {1} {(394.74, 174.80) (394.44, 175.41)} 
+    NET {} {} {} {} {} {sd_DQ_out[23]} {} {0.002} {0.000} {0.003} {30.688} {1.465} {-28.700} {} {} {} 
+  END_DATA_PATH
+  CAP_CLK_PATH
+    COLUMNS {instance} {fpin} {fedge} {tpin} {tedge} {net} {cell} {delay} {incr_delay} {slew} {load} {arrival} {required} {stolen} {fanout} {pin_location}
+  END_CAP_CLK_PATH
+END_PATH 2
+PATH 3
+  VIEW  func_worst_scenario
+  CHECK_TYPE {Late External Delay Assertion}
+  REF {} {}
+  ENDPT {} {sd_DQ_out[24]} {} {^} {trailing} {SD_DDR_CLK} {SD_DDR_CLK(C)(P)(func_worst_scenario)*}
+  BEGINPT {} {sdram_clk} {} {^} {leading} {SDRAM_CLK} {SDRAM_CLK(D)(P)(func_worst_scenario)*}
+  REQ_CLC
+    {} {Other End Arrival Time} {2.050}
+    {-} {External Delay} {0.750}
+    {+} {Phase Shift} {0.000}
+    {-} {Uncertainty} {30.000}
+    {=} {Required Time} {-28.700}
+  END_REQ_CLC
+  SLK_CLC
+    {-} {Arrival Time} {1.465}
+    {=} {Slack Time} {-30.165}
+  END_SLK_CLC
+  SLK -30.165
+  ARR_CLC
+    {} {Clock Rise Edge} {0.000}
+    {+} {Drive Adjustment} {0.009}
+    {=} {Beginpoint Arrival Time} {0.009}
+  END_ARR_CLC
+  LAUNCH_CLK_PATH
+    COLUMNS {instance} {fpin} {fedge} {tpin} {tedge} {net} {cell} {delay} {incr_delay} {slew} {load} {arrival} {required} {stolen} {fanout} {pin_location}
+  END_LAUNCH_CLK_PATH 
+  DATA_PATH 
+    COLUMNS {instance} {fpin} {fedge} {tpin} {tedge} {net} {cell} {delay} {incr_delay} {slew} {load} {arrival} {required} {stolen} {fanout} {pin_location} 
+    PORT {} {sdram_clk} {^} {} {} {sdram_clk} {} {} {} {0.021} {12.964} {0.009} {-30.155} {} {9} {(380.00, 0.00) } 
+    NET {} {} {} {} {} {sdram_clk} {} {0.002} {0.000} {0.200} {12.964} {0.011} {-30.153} {} {} {} 
+    INST {occ_int2/fast_clk_1_clkgt/u_icg} {CLK} {^} {GCLK} {^} {} {CGLNPRX2_LVT} {0.240} {0.000} {0.035} {} {0.251} {-29.913} {} {1} {(361.00, 15.20) (358.42, 15.50)} 
+    NET {} {} {} {} {} {occ_int2/n8} {} {0.002} {0.000} {0.003} {0.774} {0.254} {-29.911} {} {} {} 
+    INST {occ_int2/U2} {A1} {^} {Y} {^} {} {AO21X2_HVT} {0.567} {0.000} {0.281} {} {0.821} {-29.344} {} {203} {(357.35, 15.96) (356.90, 15.81)} 
+    NET {} {} {} {} {} {sd_CK} {} {0.002} {0.000} {0.003} {297.829} {0.823} {-29.341} {} {} {} 
+    INST {I_SDRAM_TOP/I_SDRAM_IF/U13015} {A1} {^} {Y} {^} {} {AO22X1_HVT} {0.437} {0.000} {0.175} {} {1.260} {-28.905} {} {1} {(397.02, 179.66) (396.11, 179.06)} 
+    NET {} {} {} {} {} {I_SDRAM_TOP/I_SDRAM_IF/n11092} {} {0.002} {0.000} {0.003} {16.419} {1.262} {-28.902} {} {} {} 
+    INST {I_SDRAM_TOP/I_SDRAM_IF/U881} {A} {^} {Y} {^} {} {NBUFFX4_HVT} {0.200} {0.000} {0.133} {} {1.462} {-28.702} {} {1} {(393.83, 41.04) (393.53, 41.65)} 
+    NET {} {} {} {} {} {sd_DQ_out[24]} {} {0.002} {0.000} {0.003} {15.557} {1.465} {-28.700} {} {} {} 
+  END_DATA_PATH
+  CAP_CLK_PATH
+    COLUMNS {instance} {fpin} {fedge} {tpin} {tedge} {net} {cell} {delay} {incr_delay} {slew} {load} {arrival} {required} {stolen} {fanout} {pin_location}
+  END_CAP_CLK_PATH
+END_PATH 3
+PATH 4
+  VIEW  func_worst_scenario
+  CHECK_TYPE {Late External Delay Assertion}
+  REF {} {}
+  ENDPT {} {sd_DQ_out[25]} {} {^} {trailing} {SD_DDR_CLK} {SD_DDR_CLK(C)(P)(func_worst_scenario)*}
+  BEGINPT {} {sdram_clk} {} {^} {leading} {SDRAM_CLK} {SDRAM_CLK(D)(P)(func_worst_scenario)*}
+  REQ_CLC
+    {} {Other End Arrival Time} {2.050}
+    {-} {External Delay} {0.750}
+    {+} {Phase Shift} {0.000}
+    {-} {Uncertainty} {30.000}
+    {=} {Required Time} {-28.700}
+  END_REQ_CLC
+  SLK_CLC
+    {-} {Arrival Time} {1.465}
+    {=} {Slack Time} {-30.165}
+  END_SLK_CLC
+  SLK -30.165
+  ARR_CLC
+    {} {Clock Rise Edge} {0.000}
+    {+} {Drive Adjustment} {0.009}
+    {=} {Beginpoint Arrival Time} {0.009}
+  END_ARR_CLC
+  LAUNCH_CLK_PATH
+    COLUMNS {instance} {fpin} {fedge} {tpin} {tedge} {net} {cell} {delay} {incr_delay} {slew} {load} {arrival} {required} {stolen} {fanout} {pin_location}
+  END_LAUNCH_CLK_PATH 
+  DATA_PATH 
+    COLUMNS {instance} {fpin} {fedge} {tpin} {tedge} {net} {cell} {delay} {incr_delay} {slew} {load} {arrival} {required} {stolen} {fanout} {pin_location} 
+    PORT {} {sdram_clk} {^} {} {} {sdram_clk} {} {} {} {0.021} {12.964} {0.009} {-30.155} {} {9} {(380.00, 0.00) } 
+    NET {} {} {} {} {} {sdram_clk} {} {0.002} {0.000} {0.200} {12.964} {0.011} {-30.153} {} {} {} 
+    INST {occ_int2/fast_clk_1_clkgt/u_icg} {CLK} {^} {GCLK} {^} {} {CGLNPRX2_LVT} {0.240} {0.000} {0.035} {} {0.251} {-29.913} {} {1} {(361.00, 15.20) (358.42, 15.50)} 
+    NET {} {} {} {} {} {occ_int2/n8} {} {0.002} {0.000} {0.003} {0.774} {0.254} {-29.911} {} {} {} 
+    INST {occ_int2/U2} {A1} {^} {Y} {^} {} {AO21X2_HVT} {0.567} {0.000} {0.281} {} {0.821} {-29.344} {} {203} {(357.35, 15.96) (356.90, 15.81)} 
+    NET {} {} {} {} {} {sd_CK} {} {0.002} {0.000} {0.003} {297.829} {0.823} {-29.341} {} {} {} 
+    INST {I_SDRAM_TOP/I_SDRAM_IF/U13014} {A1} {^} {Y} {^} {} {AO22X1_HVT} {0.437} {0.000} {0.175} {} {1.260} {-28.905} {} {1} {(370.42, 154.74) (371.34, 155.34)} 
+    NET {} {} {} {} {} {I_SDRAM_TOP/I_SDRAM_IF/n11071} {} {0.002} {0.000} {0.003} {2.380} {1.262} {-28.902} {} {} {} 
+    INST {I_SDRAM_TOP/I_SDRAM_IF/U788} {A} {^} {Y} {^} {} {NBUFFX4_HVT} {0.200} {0.000} {0.133} {} {1.462} {-28.702} {} {1} {(380.61, 146.22) (380.91, 145.62)} 
+    NET {} {} {} {} {} {sd_DQ_out[25]} {} {0.002} {0.000} {0.003} {26.540} {1.465} {-28.700} {} {} {} 
+  END_DATA_PATH
+  CAP_CLK_PATH
+    COLUMNS {instance} {fpin} {fedge} {tpin} {tedge} {net} {cell} {delay} {incr_delay} {slew} {load} {arrival} {required} {stolen} {fanout} {pin_location}
+  END_CAP_CLK_PATH
+END_PATH 4
+PATH 5
+  VIEW  func_worst_scenario
+  CHECK_TYPE {Late External Delay Assertion}
+  REF {} {}
+  ENDPT {} {sd_DQ_out[26]} {} {^} {trailing} {SD_DDR_CLK} {SD_DDR_CLK(C)(P)(func_worst_scenario)*}
+  BEGINPT {} {sdram_clk} {} {^} {leading} {SDRAM_CLK} {SDRAM_CLK(D)(P)(func_worst_scenario)*}
+  REQ_CLC
+    {} {Other End Arrival Time} {2.050}
+    {-} {External Delay} {0.750}
+    {+} {Phase Shift} {0.000}
+    {-} {Uncertainty} {30.000}
+    {=} {Required Time} {-28.700}
+  END_REQ_CLC
+  SLK_CLC
+    {-} {Arrival Time} {1.465}
+    {=} {Slack Time} {-30.165}
+  END_SLK_CLC
+  SLK -30.165
+  ARR_CLC
+    {} {Clock Rise Edge} {0.000}
+    {+} {Drive Adjustment} {0.009}
+    {=} {Beginpoint Arrival Time} {0.009}
+  END_ARR_CLC
+  LAUNCH_CLK_PATH
+    COLUMNS {instance} {fpin} {fedge} {tpin} {tedge} {net} {cell} {delay} {incr_delay} {slew} {load} {arrival} {required} {stolen} {fanout} {pin_location}
+  END_LAUNCH_CLK_PATH 
+  DATA_PATH 
+    COLUMNS {instance} {fpin} {fedge} {tpin} {tedge} {net} {cell} {delay} {incr_delay} {slew} {load} {arrival} {required} {stolen} {fanout} {pin_location} 
+    PORT {} {sdram_clk} {^} {} {} {sdram_clk} {} {} {} {0.021} {12.964} {0.009} {-30.155} {} {9} {(380.00, 0.00) } 
+    NET {} {} {} {} {} {sdram_clk} {} {0.002} {0.000} {0.200} {12.964} {0.011} {-30.153} {} {} {} 
+    INST {occ_int2/fast_clk_1_clkgt/u_icg} {CLK} {^} {GCLK} {^} {} {CGLNPRX2_LVT} {0.240} {0.000} {0.035} {} {0.251} {-29.913} {} {1} {(361.00, 15.20) (358.42, 15.50)} 
+    NET {} {} {} {} {} {occ_int2/n8} {} {0.002} {0.000} {0.003} {0.774} {0.254} {-29.911} {} {} {} 
+    INST {occ_int2/U2} {A1} {^} {Y} {^} {} {AO21X2_HVT} {0.567} {0.000} {0.281} {} {0.821} {-29.344} {} {203} {(357.35, 15.96) (356.90, 15.81)} 
+    NET {} {} {} {} {} {sd_CK} {} {0.002} {0.000} {0.003} {297.829} {0.823} {-29.341} {} {} {} 
+    INST {I_SDRAM_TOP/I_SDRAM_IF/U13013} {A1} {^} {Y} {^} {} {AO22X1_HVT} {0.437} {0.000} {0.175} {} {1.260} {-28.905} {} {1} {(397.18, 233.17) (396.26, 232.56)} 
+    NET {} {} {} {} {} {I_SDRAM_TOP/I_SDRAM_IF/n11090} {} {0.002} {0.000} {0.003} {7.439} {1.262} {-28.902} {} {} {} 
+    INST {I_SDRAM_TOP/I_SDRAM_IF/U874} {A} {^} {Y} {^} {} {NBUFFX4_HVT} {0.200} {0.000} {0.133} {} {1.462} {-28.702} {} {1} {(395.66, 172.98) (395.35, 172.37)} 
+    NET {} {} {} {} {} {sd_DQ_out[26]} {} {0.002} {0.000} {0.003} {30.379} {1.465} {-28.700} {} {} {} 
+  END_DATA_PATH
+  CAP_CLK_PATH
+    COLUMNS {instance} {fpin} {fedge} {tpin} {tedge} {net} {cell} {delay} {incr_delay} {slew} {load} {arrival} {required} {stolen} {fanout} {pin_location}
+  END_CAP_CLK_PATH
+END_PATH 5
+PATH 6
+  VIEW  func_worst_scenario
+  CHECK_TYPE {Late External Delay Assertion}
+  REF {} {}
+  ENDPT {} {sd_DQ_out[27]} {} {^} {trailing} {SD_DDR_CLK} {SD_DDR_CLK(C)(P)(func_worst_scenario)*}
+  BEGINPT {} {sdram_clk} {} {^} {leading} {SDRAM_CLK} {SDRAM_CLK(D)(P)(func_worst_scenario)*}
+  REQ_CLC
+    {} {Other End Arrival Time} {2.050}
+    {-} {External Delay} {0.750}
+    {+} {Phase Shift} {0.000}
+    {-} {Uncertainty} {30.000}
+    {=} {Required Time} {-28.700}
+  END_REQ_CLC
+  SLK_CLC
+    {-} {Arrival Time} {1.465}
+    {=} {Slack Time} {-30.165}
+  END_SLK_CLC
+  SLK -30.165
+  ARR_CLC
+    {} {Clock Rise Edge} {0.000}
+    {+} {Drive Adjustment} {0.009}
+    {=} {Beginpoint Arrival Time} {0.009}
+  END_ARR_CLC
+  LAUNCH_CLK_PATH
+    COLUMNS {instance} {fpin} {fedge} {tpin} {tedge} {net} {cell} {delay} {incr_delay} {slew} {load} {arrival} {required} {stolen} {fanout} {pin_location}
+  END_LAUNCH_CLK_PATH 
+  DATA_PATH 
+    COLUMNS {instance} {fpin} {fedge} {tpin} {tedge} {net} {cell} {delay} {incr_delay} {slew} {load} {arrival} {required} {stolen} {fanout} {pin_location} 
+    PORT {} {sdram_clk} {^} {} {} {sdram_clk} {} {} {} {0.021} {12.964} {0.009} {-30.155} {} {9} {(380.00, 0.00) } 
+    NET {} {} {} {} {} {sdram_clk} {} {0.002} {0.000} {0.200} {12.964} {0.011} {-30.153} {} {} {} 
+    INST {occ_int2/fast_clk_1_clkgt/u_icg} {CLK} {^} {GCLK} {^} {} {CGLNPRX2_LVT} {0.240} {0.000} {0.035} {} {0.251} {-29.913} {} {1} {(361.00, 15.20) (358.42, 15.50)} 
+    NET {} {} {} {} {} {occ_int2/n8} {} {0.002} {0.000} {0.003} {0.774} {0.254} {-29.911} {} {} {} 
+    INST {occ_int2/U2} {A1} {^} {Y} {^} {} {AO21X2_HVT} {0.567} {0.000} {0.281} {} {0.821} {-29.344} {} {203} {(357.35, 15.96) (356.90, 15.81)} 
+    NET {} {} {} {} {} {sd_CK} {} {0.002} {0.000} {0.003} {297.829} {0.823} {-29.341} {} {} {} 
+    INST {I_SDRAM_TOP/I_SDRAM_IF/U13012} {A1} {^} {Y} {^} {} {AO22X1_HVT} {0.437} {0.000} {0.175} {} {1.260} {-28.905} {} {1} {(396.87, 258.40) (395.96, 259.01)} 
+    NET {} {} {} {} {} {I_SDRAM_TOP/I_SDRAM_IF/n11073} {} {0.002} {0.000} {0.003} {25.803} {1.262} {-28.902} {} {} {} 
+    INST {I_SDRAM_TOP/I_SDRAM_IF/U799} {A} {^} {Y} {^} {} {NBUFFX4_HVT} {0.200} {0.000} {0.133} {} {1.462} {-28.702} {} {1} {(390.03, 39.22) (389.73, 38.61)} 
+    NET {} {} {} {} {} {sd_DQ_out[27]} {} {0.002} {0.000} {0.003} {14.968} {1.465} {-28.700} {} {} {} 
+  END_DATA_PATH
+  CAP_CLK_PATH
+    COLUMNS {instance} {fpin} {fedge} {tpin} {tedge} {net} {cell} {delay} {incr_delay} {slew} {load} {arrival} {required} {stolen} {fanout} {pin_location}
+  END_CAP_CLK_PATH
+END_PATH 6
+PATH 7
+  VIEW  func_worst_scenario
+  CHECK_TYPE {Late External Delay Assertion}
+  REF {} {}
+  ENDPT {} {sd_DQ_out[28]} {} {^} {trailing} {SD_DDR_CLK} {SD_DDR_CLK(C)(P)(func_worst_scenario)*}
+  BEGINPT {} {sdram_clk} {} {^} {leading} {SDRAM_CLK} {SDRAM_CLK(D)(P)(func_worst_scenario)*}
+  REQ_CLC
+    {} {Other End Arrival Time} {2.050}
+    {-} {External Delay} {0.750}
+    {+} {Phase Shift} {0.000}
+    {-} {Uncertainty} {30.000}
+    {=} {Required Time} {-28.700}
+  END_REQ_CLC
+  SLK_CLC
+    {-} {Arrival Time} {1.465}
+    {=} {Slack Time} {-30.165}
+  END_SLK_CLC
+  SLK -30.165
+  ARR_CLC
+    {} {Clock Rise Edge} {0.000}
+    {+} {Drive Adjustment} {0.009}
+    {=} {Beginpoint Arrival Time} {0.009}
+  END_ARR_CLC
+  LAUNCH_CLK_PATH
+    COLUMNS {instance} {fpin} {fedge} {tpin} {tedge} {net} {cell} {delay} {incr_delay} {slew} {load} {arrival} {required} {stolen} {fanout} {pin_location}
+  END_LAUNCH_CLK_PATH 
+  DATA_PATH 
+    COLUMNS {instance} {fpin} {fedge} {tpin} {tedge} {net} {cell} {delay} {incr_delay} {slew} {load} {arrival} {required} {stolen} {fanout} {pin_location} 
+    PORT {} {sdram_clk} {^} {} {} {sdram_clk} {} {} {} {0.021} {12.964} {0.009} {-30.155} {} {9} {(380.00, 0.00) } 
+    NET {} {} {} {} {} {sdram_clk} {} {0.002} {0.000} {0.200} {12.964} {0.011} {-30.153} {} {} {} 
+    INST {occ_int2/fast_clk_1_clkgt/u_icg} {CLK} {^} {GCLK} {^} {} {CGLNPRX2_LVT} {0.240} {0.000} {0.035} {} {0.251} {-29.913} {} {1} {(361.00, 15.20) (358.42, 15.50)} 
+    NET {} {} {} {} {} {occ_int2/n8} {} {0.002} {0.000} {0.003} {0.774} {0.254} {-29.911} {} {} {} 
+    INST {occ_int2/U2} {A1} {^} {Y} {^} {} {AO21X2_HVT} {0.567} {0.000} {0.281} {} {0.821} {-29.344} {} {203} {(357.35, 15.96) (356.90, 15.81)} 
+    NET {} {} {} {} {} {sd_CK} {} {0.002} {0.000} {0.003} {297.829} {0.823} {-29.341} {} {} {} 
+    INST {I_SDRAM_TOP/I_SDRAM_IF/U13011} {A1} {^} {Y} {^} {} {AO22X1_HVT} {0.437} {0.000} {0.175} {} {1.260} {-28.905} {} {1} {(392.92, 179.66) (392.01, 179.06)} 
+    NET {} {} {} {} {} {I_SDRAM_TOP/I_SDRAM_IF/n11091} {} {0.002} {0.000} {0.003} {16.361} {1.262} {-28.902} {} {} {} 
+    INST {I_SDRAM_TOP/I_SDRAM_IF/U908} {A} {^} {Y} {^} {} {NBUFFX4_HVT} {0.200} {0.000} {0.133} {} {1.462} {-28.702} {} {1} {(389.73, 41.04) (389.42, 41.65)} 
+    NET {} {} {} {} {} {sd_DQ_out[28]} {} {0.002} {0.000} {0.003} {15.126} {1.465} {-28.700} {} {} {} 
+  END_DATA_PATH
+  CAP_CLK_PATH
+    COLUMNS {instance} {fpin} {fedge} {tpin} {tedge} {net} {cell} {delay} {incr_delay} {slew} {load} {arrival} {required} {stolen} {fanout} {pin_location}
+  END_CAP_CLK_PATH
+END_PATH 7
+PATH 8
+  VIEW  func_worst_scenario
+  CHECK_TYPE {Late External Delay Assertion}
+  REF {} {}
+  ENDPT {} {sd_DQ_out[29]} {} {^} {trailing} {SD_DDR_CLK} {SD_DDR_CLK(C)(P)(func_worst_scenario)*}
+  BEGINPT {} {sdram_clk} {} {^} {leading} {SDRAM_CLK} {SDRAM_CLK(D)(P)(func_worst_scenario)*}
+  REQ_CLC
+    {} {Other End Arrival Time} {2.050}
+    {-} {External Delay} {0.750}
+    {+} {Phase Shift} {0.000}
+    {-} {Uncertainty} {30.000}
+    {=} {Required Time} {-28.700}
+  END_REQ_CLC
+  SLK_CLC
+    {-} {Arrival Time} {1.465}
+    {=} {Slack Time} {-30.165}
+  END_SLK_CLC
+  SLK -30.165
+  ARR_CLC
+    {} {Clock Rise Edge} {0.000}
+    {+} {Drive Adjustment} {0.009}
+    {=} {Beginpoint Arrival Time} {0.009}
+  END_ARR_CLC
+  LAUNCH_CLK_PATH
+    COLUMNS {instance} {fpin} {fedge} {tpin} {tedge} {net} {cell} {delay} {incr_delay} {slew} {load} {arrival} {required} {stolen} {fanout} {pin_location}
+  END_LAUNCH_CLK_PATH 
+  DATA_PATH 
+    COLUMNS {instance} {fpin} {fedge} {tpin} {tedge} {net} {cell} {delay} {incr_delay} {slew} {load} {arrival} {required} {stolen} {fanout} {pin_location} 
+    PORT {} {sdram_clk} {^} {} {} {sdram_clk} {} {} {} {0.021} {12.964} {0.009} {-30.155} {} {9} {(380.00, 0.00) } 
+    NET {} {} {} {} {} {sdram_clk} {} {0.002} {0.000} {0.200} {12.964} {0.011} {-30.153} {} {} {} 
+    INST {occ_int2/fast_clk_1_clkgt/u_icg} {CLK} {^} {GCLK} {^} {} {CGLNPRX2_LVT} {0.240} {0.000} {0.035} {} {0.251} {-29.913} {} {1} {(361.00, 15.20) (358.42, 15.50)} 
+    NET {} {} {} {} {} {occ_int2/n8} {} {0.002} {0.000} {0.003} {0.774} {0.254} {-29.911} {} {} {} 
+    INST {occ_int2/U2} {A1} {^} {Y} {^} {} {AO21X2_HVT} {0.567} {0.000} {0.281} {} {0.821} {-29.344} {} {203} {(357.35, 15.96) (356.90, 15.81)} 
+    NET {} {} {} {} {} {sd_CK} {} {0.002} {0.000} {0.003} {297.829} {0.823} {-29.341} {} {} {} 
+    INST {I_SDRAM_TOP/I_SDRAM_IF/U13010} {A1} {^} {Y} {^} {} {AO22X1_HVT} {0.437} {0.000} {0.175} {} {1.260} {-28.905} {} {1} {(378.33, 144.70) (379.24, 145.31)} 
+    NET {} {} {} {} {} {I_SDRAM_TOP/I_SDRAM_IF/n11075} {} {0.002} {0.000} {0.003} {1.232} {1.262} {-28.902} {} {} {} 
+    INST {I_SDRAM_TOP/I_SDRAM_IF/U807} {A} {^} {Y} {^} {} {NBUFFX4_HVT} {0.200} {0.000} {0.133} {} {1.462} {-28.702} {} {1} {(381.67, 142.88) (381.98, 142.27)} 
+    NET {} {} {} {} {} {sd_DQ_out[29]} {} {0.002} {0.000} {0.003} {26.916} {1.465} {-28.700} {} {} {} 
+  END_DATA_PATH
+  CAP_CLK_PATH
+    COLUMNS {instance} {fpin} {fedge} {tpin} {tedge} {net} {cell} {delay} {incr_delay} {slew} {load} {arrival} {required} {stolen} {fanout} {pin_location}
+  END_CAP_CLK_PATH
+END_PATH 8
+PATH 9
+  VIEW  func_worst_scenario
+  CHECK_TYPE {Late External Delay Assertion}
+  REF {} {}
+  ENDPT {} {sd_DQ_out[30]} {} {^} {trailing} {SD_DDR_CLK} {SD_DDR_CLK(C)(P)(func_worst_scenario)*}
+  BEGINPT {} {sdram_clk} {} {^} {leading} {SDRAM_CLK} {SDRAM_CLK(D)(P)(func_worst_scenario)*}
+  REQ_CLC
+    {} {Other End Arrival Time} {2.050}
+    {-} {External Delay} {0.750}
+    {+} {Phase Shift} {0.000}
+    {-} {Uncertainty} {30.000}
+    {=} {Required Time} {-28.700}
+  END_REQ_CLC
+  SLK_CLC
+    {-} {Arrival Time} {1.465}
+    {=} {Slack Time} {-30.165}
+  END_SLK_CLC
+  SLK -30.165
+  ARR_CLC
+    {} {Clock Rise Edge} {0.000}
+    {+} {Drive Adjustment} {0.009}
+    {=} {Beginpoint Arrival Time} {0.009}
+  END_ARR_CLC
+  LAUNCH_CLK_PATH
+    COLUMNS {instance} {fpin} {fedge} {tpin} {tedge} {net} {cell} {delay} {incr_delay} {slew} {load} {arrival} {required} {stolen} {fanout} {pin_location}
+  END_LAUNCH_CLK_PATH 
+  DATA_PATH 
+    COLUMNS {instance} {fpin} {fedge} {tpin} {tedge} {net} {cell} {delay} {incr_delay} {slew} {load} {arrival} {required} {stolen} {fanout} {pin_location} 
+    PORT {} {sdram_clk} {^} {} {} {sdram_clk} {} {} {} {0.021} {12.964} {0.009} {-30.155} {} {9} {(380.00, 0.00) } 
+    NET {} {} {} {} {} {sdram_clk} {} {0.002} {0.000} {0.200} {12.964} {0.011} {-30.153} {} {} {} 
+    INST {occ_int2/fast_clk_1_clkgt/u_icg} {CLK} {^} {GCLK} {^} {} {CGLNPRX2_LVT} {0.240} {0.000} {0.035} {} {0.251} {-29.913} {} {1} {(361.00, 15.20) (358.42, 15.50)} 
+    NET {} {} {} {} {} {occ_int2/n8} {} {0.002} {0.000} {0.003} {0.774} {0.254} {-29.911} {} {} {} 
+    INST {occ_int2/U2} {A1} {^} {Y} {^} {} {AO21X2_HVT} {0.567} {0.000} {0.281} {} {0.821} {-29.344} {} {203} {(357.35, 15.96) (356.90, 15.81)} 
+    NET {} {} {} {} {} {sd_CK} {} {0.002} {0.000} {0.003} {297.829} {0.823} {-29.341} {} {} {} 
+    INST {I_SDRAM_TOP/I_SDRAM_IF/U13009} {A1} {^} {Y} {^} {} {AO22X1_HVT} {0.437} {0.000} {0.175} {} {1.260} {-28.905} {} {1} {(396.26, 245.02) (395.35, 245.63)} 
+    NET {} {} {} {} {} {I_SDRAM_TOP/I_SDRAM_IF/n11084} {} {0.002} {0.000} {0.003} {8.964} {1.262} {-28.902} {} {} {} 
+    INST {I_SDRAM_TOP/I_SDRAM_IF/U839} {A} {^} {Y} {^} {} {NBUFFX4_HVT} {0.200} {0.000} {0.133} {} {1.462} {-28.702} {} {1} {(393.68, 172.98) (393.38, 172.37)} 
+    NET {} {} {} {} {} {sd_DQ_out[30]} {} {0.002} {0.000} {0.003} {30.319} {1.465} {-28.700} {} {} {} 
+  END_DATA_PATH
+  CAP_CLK_PATH
+    COLUMNS {instance} {fpin} {fedge} {tpin} {tedge} {net} {cell} {delay} {incr_delay} {slew} {load} {arrival} {required} {stolen} {fanout} {pin_location}
+  END_CAP_CLK_PATH
+END_PATH 9
+PATH 10
+  VIEW  func_worst_scenario
+  CHECK_TYPE {Late External Delay Assertion}
+  REF {} {}
+  ENDPT {} {sd_DQ_out[31]} {} {^} {trailing} {SD_DDR_CLK} {SD_DDR_CLK(C)(P)(func_worst_scenario)*}
+  BEGINPT {} {sdram_clk} {} {^} {leading} {SDRAM_CLK} {SDRAM_CLK(D)(P)(func_worst_scenario)*}
+  REQ_CLC
+    {} {Other End Arrival Time} {2.050}
+    {-} {External Delay} {0.750}
+    {+} {Phase Shift} {0.000}
+    {-} {Uncertainty} {30.000}
+    {=} {Required Time} {-28.700}
+  END_REQ_CLC
+  SLK_CLC
+    {-} {Arrival Time} {1.465}
+    {=} {Slack Time} {-30.165}
+  END_SLK_CLC
+  SLK -30.165
+  ARR_CLC
+    {} {Clock Rise Edge} {0.000}
+    {+} {Drive Adjustment} {0.009}
+    {=} {Beginpoint Arrival Time} {0.009}
+  END_ARR_CLC
+  LAUNCH_CLK_PATH
+    COLUMNS {instance} {fpin} {fedge} {tpin} {tedge} {net} {cell} {delay} {incr_delay} {slew} {load} {arrival} {required} {stolen} {fanout} {pin_location}
+  END_LAUNCH_CLK_PATH 
+  DATA_PATH 
+    COLUMNS {instance} {fpin} {fedge} {tpin} {tedge} {net} {cell} {delay} {incr_delay} {slew} {load} {arrival} {required} {stolen} {fanout} {pin_location} 
+    PORT {} {sdram_clk} {^} {} {} {sdram_clk} {} {} {} {0.021} {12.964} {0.009} {-30.155} {} {9} {(380.00, 0.00) } 
+    NET {} {} {} {} {} {sdram_clk} {} {0.002} {0.000} {0.200} {12.964} {0.011} {-30.153} {} {} {} 
+    INST {occ_int2/fast_clk_1_clkgt/u_icg} {CLK} {^} {GCLK} {^} {} {CGLNPRX2_LVT} {0.240} {0.000} {0.035} {} {0.251} {-29.913} {} {1} {(361.00, 15.20) (358.42, 15.50)} 
+    NET {} {} {} {} {} {occ_int2/n8} {} {0.002} {0.000} {0.003} {0.774} {0.254} {-29.911} {} {} {} 
+    INST {occ_int2/U2} {A1} {^} {Y} {^} {} {AO21X2_HVT} {0.567} {0.000} {0.281} {} {0.821} {-29.344} {} {203} {(357.35, 15.96) (356.90, 15.81)} 
+    NET {} {} {} {} {} {sd_CK} {} {0.002} {0.000} {0.003} {297.829} {0.823} {-29.341} {} {} {} 
+    INST {I_SDRAM_TOP/I_SDRAM_IF/U13008} {A1} {^} {Y} {^} {} {AO22X1_HVT} {0.437} {0.000} {0.175} {} {1.260} {-28.905} {} {1} {(393.38, 261.74) (392.46, 262.35)} 
+    NET {} {} {} {} {} {I_SDRAM_TOP/I_SDRAM_IF/n11066} {} {0.002} {0.000} {0.003} {8.339} {1.262} {-28.902} {} {} {} 
+    INST {I_SDRAM_TOP/I_SDRAM_IF/U758} {A} {^} {Y} {^} {} {NBUFFX4_HVT} {0.200} {0.000} {0.133} {} {1.462} {-28.702} {} {1} {(392.46, 193.04) (392.16, 192.43)} 
+    NET {} {} {} {} {} {sd_DQ_out[31]} {} {0.002} {0.000} {0.003} {32.781} {1.465} {-28.700} {} {} {} 
+  END_DATA_PATH
+  CAP_CLK_PATH
+    COLUMNS {instance} {fpin} {fedge} {tpin} {tedge} {net} {cell} {delay} {incr_delay} {slew} {load} {arrival} {required} {stolen} {fanout} {pin_location}
+  END_CAP_CLK_PATH
+END_PATH 10
+

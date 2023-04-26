@@ -1,0 +1,1053 @@
+#######################################################
+#                                                     
+#  Innovus Command Logging File                     
+#  Created on Tue Apr 25 15:09:14 2023                
+#                                                     
+#######################################################
+
+#@(#)CDS: Innovus v19.16-s053_1 (64bit) 08/31/2020 13:16 (Linux 2.6.32-431.11.2.el6.x86_64)
+#@(#)CDS: NanoRoute 19.16-s053_1 NR200827-1939/19_16-UB (database version 18.20, 510.7.1) {superthreading v1.53}
+#@(#)CDS: AAE 19.16-s019 (64bit) 08/31/2020 (Linux 2.6.32-431.11.2.el6.x86_64)
+#@(#)CDS: CTE 19.16-s019_1 () Aug 22 2020 00:37:42 ( )
+#@(#)CDS: SYNTECH 19.16-s010_1 () Aug 17 2020 09:10:13 ( )
+#@(#)CDS: CPE v19.16-s038
+#@(#)CDS: IQuantus/TQuantus 19.1.3-s268 (64bit) Mon Aug 10 22:57:12 PDT 2020 (Linux 2.6.32-431.11.2.el6.x86_64)
+
+alias fs set top_design fifo1_sram
+alias f set top_design fifo1
+alias o set top_design ORCA_TOP
+alias e set top_design ExampleRocketSystem
+set_table_style -name report_timing -max_widths { 8,6,23,70} -no_frame_fix_width
+set_global report_timing_format  {delay arrival slew load fanout cell hpin}
+set_global _enable_mmmc_by_default_flow      $CTE::mmmc_default
+suppressMessage ENCEXT-2799
+win
+o
+set_global _enable_mmmc_by_default_flow      $CTE::mmmc_default
+set search_path {}
+set init_lef_file {../../cadence_cap_tech/tech.lef saed32sram.lef saed32nm_hvt_1p9m.lef saed32nm_rvt_1p9m.lef saed32nm_lvt_1p9m.lef}
+set init_mmmc_file mmmc.tcl
+set init_design_netlisttype Verilog
+set init_verilog ../../syn/outputs/ORCA_TOP.genus_phys.vg
+set init_top_cell ORCA_TOP
+set init_pwr_net VDD
+set init_gnd_net VSS
+init_design
+defIn ../outputs/ORCA_TOP.floorplan.innovus.def
+add_tracks -honor_pitch
+defIn ../../syn/outputs/ORCA_TOP.genus.scan.def
+read_power_intent ../../syn/outputs/ORCA_TOP.genus.upf -1801
+commit_power_intent
+modifyPowerDomainAttr PD_RISC_CORE -box 430 0 760 330
+setNanoRouteMode -drouteEndIteration 10
+set_ccopt_property target_max_trans 0.3ns
+setNanoRouteMode -drouteEndIteration 5
+setNanoRouteMode -routeWithViaOnlyForMacroCellPin false
+setNanoRouteMode -routeWithViaOnlyForStandardCellPin 1:1
+setOptMode -usefulSkew false
+setOptMode -usefulSkewCCOpt none
+setOptMode -usefulSkewPostRoute false
+setOptMode -usefulSkewPreCTS false
+all_constraint_modes -active
+set_interactive_constraint_modes [all_constraint_modes -active]
+set_units -time ns -resistance MOhm -capacitance fF -voltage V -current uA
+setDontUse *DELLN* true
+createBasicPathGroups -expanded
+saveDesign ORCA_TOP_floorplan.innovus
+setOptMode -usefulSkew false
+setOptMode -usefulSkewCCOpt none
+setOptMode -usefulSkewPostRoute false
+setOptMode -usefulSkewPreCTS false
+create_library_set -name worst_libs_vddh -timing {
+update_delay_corner -name worst_corner -power_domain PD_RISC_CORE -library_set worst_libs_vddh
+setEcoMode -batchMode true
+ecoChangeCell -inst Xecutng_Instrn_0__UPF_LS -cell LSDNSSX8_LVT
+ecoChangeCell -inst Xecutng_Instrn_1__UPF_LS -cell LSDNSSX8_LVT
+ecoChangeCell -inst Xecutng_Instrn_2__UPF_LS -cell LSDNSSX8_LVT
+ecoChangeCell -inst Xecutng_Instrn_3__UPF_LS -cell LSDNSSX4_LVT
+ecoChangeCell -inst Xecutng_Instrn_4__UPF_LS -cell LSDNSSX4_LVT
+ecoChangeCell -inst Xecutng_Instrn_5__UPF_LS -cell LSDNSSX8_LVT
+ecoChangeCell -inst Xecutng_Instrn_6__UPF_LS -cell LSDNSSX8_LVT
+ecoChangeCell -inst Xecutng_Instrn_7__UPF_LS -cell LSDNSSX8_LVT
+ecoChangeCell -inst Xecutng_Instrn_8__UPF_LS -cell LSDNSSX8_LVT
+ecoChangeCell -inst Xecutng_Instrn_9__UPF_LS -cell LSDNSSX8_LVT
+ecoChangeCell -inst Xecutng_Instrn_10__UPF_LS -cell LSDNSSX8_LVT
+ecoChangeCell -inst Xecutng_Instrn_11__UPF_LS -cell LSDNSSX8_LVT
+ecoChangeCell -inst Xecutng_Instrn_12__UPF_LS -cell LSDNSSX8_LVT
+ecoChangeCell -inst Xecutng_Instrn_14__UPF_LS -cell LSDNSSX8_LVT
+ecoChangeCell -inst Xecutng_Instrn_15__UPF_LS -cell LSDNSSX8_LVT
+ecoChangeCell -inst Xecutng_Instrn_16__UPF_LS -cell LSDNSSX8_LVT
+ecoChangeCell -inst Xecutng_Instrn_17__UPF_LS -cell LSDNSSX8_LVT
+ecoChangeCell -inst Xecutng_Instrn_18__UPF_LS -cell LSDNSSX8_LVT
+ecoChangeCell -inst Xecutng_Instrn_19__UPF_LS -cell LSDNSSX8_LVT
+ecoChangeCell -inst Xecutng_Instrn_20__UPF_LS -cell LSDNSSX8_LVT
+ecoChangeCell -inst Xecutng_Instrn_21__UPF_LS -cell LSDNSSX8_LVT
+ecoChangeCell -inst Xecutng_Instrn_22__UPF_LS -cell LSDNSSX8_LVT
+ecoChangeCell -inst Xecutng_Instrn_23__UPF_LS -cell LSDNSSX8_LVT
+ecoChangeCell -inst Xecutng_Instrn_24__UPF_LS -cell LSDNSSX4_LVT
+ecoChangeCell -inst Xecutng_Instrn_25__UPF_LS -cell LSDNSSX8_LVT
+ecoChangeCell -inst Xecutng_Instrn_26__UPF_LS -cell LSDNSSX4_LVT
+ecoChangeCell -inst Xecutng_Instrn_27__UPF_LS -cell LSDNSSX4_LVT
+ecoChangeCell -inst Xecutng_Instrn_28__UPF_LS -cell LSDNSSX8_LVT
+ecoChangeCell -inst Xecutng_Instrn_30__UPF_LS -cell LSDNSSX4_LVT
+ecoChangeCell -inst Xecutng_Instrn_31__UPF_LS -cell LSDNSSX8_LVT
+ecoChangeCell -inst PSW_2__UPF_LS -cell LSDNSSX8_LVT
+ecoChangeCell -inst PSW_3__UPF_LS -cell LSDNSSX2_LVT
+ecoChangeCell -inst PSW_4__UPF_LS -cell LSDNSSX8_LVT
+ecoChangeCell -inst PSW_6__UPF_LS -cell LSDNSSX4_LVT
+ecoChangeCell -inst PSW_8__UPF_LS -cell LSDNSSX4_LVT
+ecoChangeCell -inst PSW_9__UPF_LS -cell LSDNSSX4_LVT
+ecoChangeCell -inst PSW_10__UPF_LS -cell LSDNSSX4_LVT
+ecoChangeCell -inst RESULT_DATA_0__UPF_LS -cell LSDNSSX8_LVT
+ecoChangeCell -inst RESULT_DATA_1__UPF_LS -cell LSDNSSX8_LVT
+ecoChangeCell -inst RESULT_DATA_2__UPF_LS -cell LSDNSSX8_LVT
+ecoChangeCell -inst RESULT_DATA_3__UPF_LS -cell LSDNSSX8_LVT
+ecoChangeCell -inst RESULT_DATA_4__UPF_LS -cell LSDNSSX8_LVT
+ecoChangeCell -inst RESULT_DATA_5__UPF_LS -cell LSDNSSX8_LVT
+ecoChangeCell -inst RESULT_DATA_6__UPF_LS -cell LSDNSSX8_LVT
+ecoChangeCell -inst RESULT_DATA_7__UPF_LS -cell LSDNSSX8_LVT
+ecoChangeCell -inst RESULT_DATA_8__UPF_LS -cell LSDNSSX8_LVT
+ecoChangeCell -inst RESULT_DATA_9__UPF_LS -cell LSDNSSX8_LVT
+ecoChangeCell -inst RESULT_DATA_10__UPF_LS -cell LSDNSSX8_LVT
+ecoChangeCell -inst RESULT_DATA_11__UPF_LS -cell LSDNSSX8_LVT
+ecoChangeCell -inst RESULT_DATA_12__UPF_LS -cell LSDNSSX8_LVT
+ecoChangeCell -inst RESULT_DATA_13__UPF_LS -cell LSDNSSX8_LVT
+ecoChangeCell -inst RESULT_DATA_14__UPF_LS -cell LSDNSSX8_LVT
+ecoChangeCell -inst RESULT_DATA_15__UPF_LS -cell LSDNSSX8_LVT
+ecoChangeCell -inst EndOfInstrn_UPF_LS -cell LSDNSSX2_LVT
+ecoChangeCell -inst OUT_VALID_UPF_LS -cell LSDNSSX4_LVT
+ecoChangeCell -inst PSW_7__UPF_LS -cell LSDNSSX4_LVT
+ecoChangeCell -inst Xecutng_Instrn_13__UPF_LS -cell LSDNSSX8_LVT
+ecoChangeCell -inst Xecutng_Instrn_29__UPF_LS -cell LSDNSSX8_LVT
+ecoChangeCell -inst STACK_FULL_UPF_LS -cell LSDNSSX2_LVT
+ecoChangeCell -inst Rd_Instr_UPF_LS -cell LSDNSSX2_LVT
+ecoChangeCell -inst PSW_5__UPF_LS -cell LSDNSSX4_LVT
+setEcoMode -batchMode false
+place_opt_design
+redirect -tee ../reports/ORCA_TOP.innovus.place.congestion.2d.rpt { reportCongestion -hotSpot -overflow -includeBlockage }
+redirect -tee ../reports/ORCA_TOP.innovus.place.congestion.3d.rpt { reportCongestion -hotSpot -overflow -includeBlockage -3d }
+timeDesign -preCTS -prefix place -outDir ../reports/ORCA_TOP.innovus -expandedViews
+redirect -tee ../reports/ORCA_TOP.innovus.place.density.rpt { reportDensityMap }
+summaryReport -noHtml -outfile ../reports/ORCA_TOP.innovus.place.summary.rpt
+saveDesign ORCA_TOP_place.innovus
+setLayerPreference node_layer -isVisible 0
+setLayerPreference node_blockage -isVisible 1
+selectModule I_SDRAM_TOP
+highlight -auto_color
+deselectAll
+selectModule I_BLENDER_1
+highlight -auto_color
+deselectAll
+selectModule I_BLENDER_0
+highlight -auto_color
+deselectAll
+selectModule I_RISC_CORE
+highlight -auto_color
+deselectAll
+selectModule I_CONTEXT_MEM
+highlight -auto_color
+deselectAll
+selectModule I_PARSER
+highlight -auto_color
+deselectAll
+selectModule I_PCI_TOP
+highlight -auto_color
+deselectAll
+selectModule I_CLOCKING
+highlight -auto_color
+deselectAll
+selectModule occ_int2
+highlight -auto_color
+deselectAll
+selectModule snps_clk_chain_1
+highlight -auto_color
+deselectAll
+dehighlight -select
+dehighlight
+report_timing -machine_readable -path_group reg2reg -max_paths 10 > foo.mtarpt
+load_timing_debug_report foo.mtarpt
+highlight_timing_report -file foo.mtarpt -path 1 -noarrow
+highlight_timing_report {-file foo.mtarpt -path 1 -noarrow}
+gui_select -rect {848.09800 166.28000 851.10800 100.04200}
+fit
+fit
+zoomOut
+zoomIn
+zoomIn
+zoomIn
+zoomOut
+zoomOut
+fit
+report_timing -machine_readable -path_group in2reg -max_paths 10 > foo.mtarpt
+load_timing_debug_report foo.mtarpt
+highlight_timing_report -file foo.mtarpt -path 1 -noarrow
+highlight_timing_report {-file foo.mtarpt -path 1 -noarrow}
+report_timing -machine_readable -path_group reg2out -max_paths 10 > foo.mtarpt
+load_timing_debug_report foo.mtarpt
+highlight_timing_report -file foo.mtarpt -path 1 -noarrow
+highlight_timing_report {-file foo.mtarpt -path 1 -noarrow}
+selectInst I_SDRAM_TOP/I_SDRAM_IF/mega_shift_0_reg_11__24_
+zoomIn
+panPage 0 -1
+panPage 0 -1
+panPage 0 -1
+zoomIn
+zoomIn
+fit
+report_timing -machine_readable -path_group in2out -max_paths 10 > foo.mtarpt
+load_timing_debug_report foo.mtarpt
+highlight_timing_report -file foo.mtarpt -path 1 -noarrow
+highlight_timing_report {-file foo.mtarpt -path 1 -noarrow}
+setLayerPreference densityMap -isVisible 1
+setLayerPreference densityMap -color {#000066 #00006d #000074 #00007b #000082 #000089 #000090 #000097 #00009e #0000a5 #0000ac #0000b3 #0000bb #0000c2 #0000c9 #0000d0 #0000d7 #0000de #0000e5 #0000ec #0000f3 #0000fa #0005ff #0011ff #001eff #002aff #0037ff #0043ff #0050ff #005cff #0069ff #0076ff #0082ff #008fff #009bff #00a8ff #00b4ff #00c1ff #00cdff #00daff #00e7ff #00f3ff #00fefd #00f8f2 #00f2e6 #00ecda #00e6ce #00e0c2 #00dbb7 #00d5ab #00cf9f #00c993 #00c387 #00bd7c #00b770 #00b164 #00ab58 #00a54c #009f40 #009a35 #009429 #008e1d #008811 #008205 #058200 #118800 #1d8e00 #299400 #359a00 #409f00 #4ca500 #58ab00 #64b100 #70b700 #7cbd00 #87c300 #93c900 #9fcf00 #abd500 #b7db00 #c2e000 #cee600 #daec00 #e6f200 #f2f800 #fdfe00 #fff300 #ffe700 #ffda00 #ffcd00 #ffc100 #ffb400 #ffa800 #ff9b00 #ff8f00 #ff8200 #ff7600 #ff6900 #ff5c00 #ff5000 #ff4300 #ff3700 #ff2a00 #ff1e00 #ff1100 #ff0500 #ff0606 #ff1212 #ff1e1e #ff2a2a #ff3636 #ff4242 #ff4d4d #ff5959 #ff6565 #ff7171 #ff7d7d #ff8888 #ff9494 #ffa0a0 #ffacac #ffb8b8 #ffc3c3 #ffcfcf #ffdbdb #ffe7e7 #fff3f3} -stippleData 8 4 {0xaa 0x55 0xaa 0x55}
+setLayerPreference densityMap -color {#000066 #00006d #000074 #00007b #000082 #000089 #000090 #000097 #00009e #0000a5 #0000ac #0000b3 #0000bb #0000c2 #0000c9 #0000d0 #0000d7 #0000de #0000e5 #0000ec #0000f3 #0000fa #0005ff #0011ff #001eff #002aff #0037ff #0043ff #0050ff #005cff #0069ff #0076ff #0082ff #008fff #009bff #00a8ff #00b4ff #00c1ff #00cdff #00daff #00e7ff #00f3ff #00fefd #00f8f2 #00f2e6 #00ecda #00e6ce #00e0c2 #00dbb7 #00d5ab #00cf9f #00c993 #00c387 #00bd7c #00b770 #00b164 #00ab58 #00a54c #009f40 #009a35 #009429 #008e1d #008811 #008205 #058200 #118800 #1d8e00 #299400 #359a00 #409f00 #4ca500 #58ab00 #64b100 #70b700 #7cbd00 #87c300 #93c900 #9fcf00 #abd500 #b7db00 #c2e000 #cee600 #daec00 #e6f200 #f2f800 #fdfe00 #fff300 #ffe700 #ffda00 #ffcd00 #ffc100 #ffb400 #ffa800 #ff9b00 #ff8f00 #ff8200 #ff7600 #ff6900 #ff5c00 #ff5000 #ff4300 #ff3700 #ff2a00 #ff1e00 #ff1100 #ff0500 #ff0606 #ff1212 #ff1e1e #ff2a2a #ff3636 #ff4242 #ff4d4d #ff5959 #ff6565 #ff7171 #ff7d7d #ff8888 #ff9494 #ffa0a0 #ffacac #ffb8b8 #ffc3c3 #ffcfcf #ffdbdb #ffe7e7 #fff3f3} -stippleData 8 4 {0xaa 0x55 0xaa 0x55}
+setLayerPreference densityMap -isVisible 0
+setLayerPreference groupmain_Congestion -isVisible 1
+setLayerPreference congestH -color {#000066 #0000c9 #0053ff #00fcfa #00a953 #53a900 #f9fc00 #ff5300 #ff5858 #ffffff}
+setLayerPreference congestV -color {#000066 #0000c9 #0053ff #00fcfa #00a953 #53a900 #f9fc00 #ff5300 #ff5858 #ffffff}
+setLayerPreference groupmain_Congestion -isVisible 0
+setLayerPreference groupmain_Congestion -isVisible 1
+setLayerPreference groupmain_Congestion -isVisible 0
+setLayerPreference pinDensityMap -isVisible 1
+setPinDensityMapMode -gridInRow 10 -threshold 0.5 -displayStep 0.05
+setLayerPreference pinDensityMap -color {#000066 #00006d #000074 #00007b #000082 #000089 #000090 #000097 #00009e #0000a5 #0000ac #0000b3 #0000bb #0000c2 #0000c9 #0000d0 #0000d7 #0000de #0000e5 #0000ec #0000f3 #0000fa #0005ff #0011ff #001eff #002aff #0037ff #0043ff #0050ff #005cff #0069ff #0076ff #0082ff #008fff #009bff #00a8ff #00b4ff #00c1ff #00cdff #00daff #00e7ff #00f3ff #00fefd #00f8f2 #00f2e6 #00ecda #00e6ce #00e0c2 #00dbb7 #00d5ab #00cf9f #00c993 #00c387 #00bd7c #00b770 #00b164 #00ab58 #00a54c #009f40 #009a35 #009429 #008e1d #008811 #008205 #058200 #118800 #1d8e00 #299400 #359a00 #409f00 #4ca500 #58ab00 #64b100 #70b700 #7cbd00 #87c300 #93c900 #9fcf00 #abd500 #b7db00 #c2e000 #cee600 #daec00 #e6f200 #f2f800 #fdfe00 #fff300 #ffe700 #ffda00 #ffcd00 #ffc100 #ffb400 #ffa800 #ff9b00 #ff8f00 #ff8200 #ff7600 #ff6900 #ff5c00 #ff5000 #ff4300 #ff3700 #ff2a00 #ff1e00 #ff1100 #ff0500 #ff0606 #ff1212 #ff1e1e #ff2a2a #ff3636 #ff4242 #ff4d4d #ff5959 #ff6565 #ff7171 #ff7d7d #ff8888 #ff9494 #ffa0a0 #ffacac #ffb8b8 #ffc3c3 #ffcfcf #ffdbdb #ffe7e7 #fff3f3}
+reportPinDensityMap
+reportCongestion -hotSpot -overflow -includeBlockage
+setLayerPreference pinDensityMap -isVisible 0
+summaryReport -noHtml -outfile summary.rpt
+summaryReport -noHtml -outfile ../reports/ORCA_TOP.innovus.place.summary.rpt
+timeDesign -preCTS -prefix place -outDir ../reports/ORCA_TOP.innovus -expandedViews
+timeDesign -preCTS -prefix place -outDir ../reports/ORCA_TOP.innovus -expandedViews
+defIn ORCA_TOP.floorplan.innovus.macros.lab2.def
+selectInst I_CONTEXT_MEM/I_CONTEXT_RAM_3_1
+gui_select -rect {447.92400 512.95300 348.00100 462.19900}
+deselectAll
+deselectAll
+selectDensityArea 398.19 467.566 412.19 533.308 20 defScreenName
+uiSetTool move
+deselectAll
+selectInst I_CONTEXT_MEM/I_CONTEXT_RAM_3_1
+setObjFPlanBox Instance I_CONTEXT_MEM/I_CONTEXT_RAM_3_1 307.509 405.709 389.56 471.451
+setObjFPlanBox Instance I_CONTEXT_MEM/I_CONTEXT_RAM_3_1 383.64 412.053 465.691 477.795
+deselectAll
+selectInst I_BLENDER_1/R_638
+setObjFPlanBox Instance I_BLENDER_1/R_638 188.448 352.759 193.616 354.431
+setLayerPreference node_blockage -isVisible 0
+deselectAll
+selectInst I_BLENDER_1/U4239
+setObjFPlanBox Instance I_BLENDER_1/U4239 323.899 423.961 325.115 425.633
+deselectAll
+selectInst I_BLENDER_1/FE_OFC5260_n8004
+uiSetTool move
+setObjFPlanBox Instance I_BLENDER_1/FE_OFC5260_n8004 344.294 376.292 345.054 377.964
+deselectAll
+selectInst I_BLENDER_1/U2024
+setObjFPlanBox Instance I_BLENDER_1/U2024 317.554 362.534 319.074 364.206
+uiSetTool move
+deselectAll
+selectInst I_SDRAM_TOP/I_SDRAM_READ_FIFO_SD_FIFO_RAM_0
+setObjFPlanBox Instance I_SDRAM_TOP/I_SDRAM_READ_FIFO_SD_FIFO_RAM_0 38.086 471.761 169.492 566.669
+deselectAll
+selectInst I_BLENDER_1/U7311
+setObjFPlanBox Instance I_BLENDER_1/U7311 354.496 202.808 356.016 204.48
+deselectAll
+selectInst FE_OFC1211_scan_enable
+setObjFPlanBox Instance FE_OFC1211_scan_enable 556.888 -15663.708 558.104 -15662.036
+fit
+deselectAll
+selectInst I_SDRAM_TOP/I_SDRAM_READ_FIFO_SD_FIFO_RAM_1
+setObjFPlanBox Instance I_SDRAM_TOP/I_SDRAM_READ_FIFO_SD_FIFO_RAM_1 193.523 490.095 324.929 585.003
+deselectAll
+selectInst I_BLENDER_1/U6680
+setObjFPlanBox Instance I_BLENDER_1/U6680 360.458 390.707 362.434 392.379
+deselectAll
+selectInst I_BLENDER_1/U2799
+setObjFPlanBox Instance I_BLENDER_1/U2799 447.322 479.983 448.386 481.655
+uiSetTool move
+deselectAll
+selectInst I_CONTEXT_MEM/I_CONTEXT_RAM_3_1
+setObjFPlanBox Instance I_CONTEXT_MEM/I_CONTEXT_RAM_3_1 415.362 461.221 497.413 526.963
+uiSetTool select
+uiSetTool move
+uiSetTool move
+uiSetTool select
+alignObject -side left
+alignObject -side left
+deselectAll
+selectInst I_CONTEXT_MEM/I_CONTEXT_RAM_3_1
+alignObject -side left
+alignObject -side left
+alignObject -side left
+alignObject -side bottom
+alignObject -side left
+deselectAll
+selectInst I_CONTEXT_MEM/I_CONTEXT_RAM_3_1
+alignObject -side left
+deselectAll
+selectInst I_CONTEXT_MEM/I_CONTEXT_RAM_2_1
+deselectAll
+selectInst I_CONTEXT_MEM/I_CONTEXT_RAM_3_1
+gui_select -rect {443.16600 512.95300 441.58000 560.53600}
+deselectAll
+deselectAll
+selectInst I_CONTEXT_MEM/I_CONTEXT_RAM_2_1
+selectInst I_CONTEXT_MEM/I_CONTEXT_RAM_3_1
+alignObject -side left
+alignObject -side left
+alignObject -side left
+redraw
+redraw
+redraw
+redraw
+redraw
+spaceObject -fixSide top -space 15
+gui_select -rect {439.99400 538.33100 439.99400 560.53600}
+deselectAll
+gui_select -rect {439.99400 560.53600 439.99400 573.22400}
+selectInst I_CONTEXT_MEM/I_CONTEXT_RAM_0_2
+deselectAll
+selectInst I_CONTEXT_MEM/I_CONTEXT_RAM_1_1
+gui_select -append -rect {455.85500 665.21700 452.68200 701.69700}
+deselectAll
+selectInst I_CONTEXT_MEM/I_CONTEXT_RAM_0_2
+deselectAll
+selectInst I_CONTEXT_MEM/I_CONTEXT_RAM_1_1
+gui_select -append -rect {457.44100 655.70100 468.54300 719.14400}
+selectInst I_CONTEXT_MEM/I_CONTEXT_RAM_0_2
+selectInst I_CONTEXT_MEM/I_CONTEXT_RAM_0_2
+alignObject -side top
+alignObject -side bottom
+alignObject -side left
+deselectAll
+selectInst I_SDRAM_TOP/I_SDRAM_READ_FIFO_SD_FIFO_RAM_1
+deselectAll
+gui_select -rect {459.02700 584.32700 443.16600 647.77000}
+uiSetTool move
+selectInst I_CONTEXT_MEM/I_CONTEXT_RAM_2_1
+setObjFPlanBox Instance I_CONTEXT_MEM/I_CONTEXT_RAM_2_1 404.921 599.922 486.972 665.664
+deselectAll
+selectInst I_CONTEXT_MEM/I_CONTEXT_RAM_0_2
+setObjFPlanBox Instance I_CONTEXT_MEM/I_CONTEXT_RAM_0_2 314.56 372.387 396.611 438.129
+deselectAll
+selectInst I_SDRAM_TOP/I_SDRAM_IF/FE_OFC3002_mega_shift_1_1012
+setObjFPlanBox Instance I_SDRAM_TOP/I_SDRAM_IF/FE_OFC3002_mega_shift_1_1012 455.168 358.363 456.384 360.035
+uiSetTool move
+setObjFPlanBox Instance I_SDRAM_TOP/I_SDRAM_IF/FE_OFC3002_mega_shift_1_1012 368.005 403.805 369.221 405.477
+deselectAll
+selectInst I_BLENDER_1/s4_op2_reg_5_
+setObjFPlanBox Instance I_BLENDER_1/s4_op2_reg_5_ 471.782 401.366 477.254 403.038
+deselectAll
+selectInst I_CONTEXT_MEM/I_CONTEXT_RAM_0_2
+setObjFPlanBox Instance I_CONTEXT_MEM/I_CONTEXT_RAM_0_2 574.678 356.526 656.729 422.268
+deselectAll
+selectInst I_SDRAM_TOP/I_SDRAM_IF/mega_shift_1_reg_29__24_
+setObjFPlanBox Instance I_SDRAM_TOP/I_SDRAM_IF/mega_shift_1_reg_29__24_ 453.74 534.339 459.212 536.011
+deselectAll
+selectInst I_SDRAM_TOP/I_SDRAM_IF/U10545
+uiSetTool move
+setObjFPlanBox Instance I_SDRAM_TOP/I_SDRAM_IF/U10545 620.444 399.093 621.964 400.765
+setObjFPlanBox Instance I_SDRAM_TOP/I_SDRAM_IF/U10545 629.98 359.956 631.5 361.628
+deselectAll
+selectInst I_SDRAM_TOP/I_SDRAM_IF/U9149
+setObjFPlanBox Instance I_SDRAM_TOP/I_SDRAM_IF/U9149 627.654 415.297 629.174 416.969
+deselectAll
+selectInst I_CONTEXT_MEM/I_CONTEXT_RAM_0_2
+setObjFPlanBox Instance I_CONTEXT_MEM/I_CONTEXT_RAM_0_2 400.209 530.994 482.26 596.736
+deselectAll
+selectInst I_BLENDER_0/U883
+setObjFPlanBox Instance I_BLENDER_0/U883 308.236 541.424 310.82 543.096
+deselectAll
+selectInst I_SDRAM_TOP/I_SDRAM_READ_FIFO_SD_FIFO_RAM_1
+setObjFPlanBox Instance I_SDRAM_TOP/I_SDRAM_READ_FIFO_SD_FIFO_RAM_1 816.853 502.784 948.259 597.692
+setObjFPlanBox Instance I_SDRAM_TOP/I_SDRAM_READ_FIFO_SD_FIFO_RAM_1 796.234 574.158 927.64 669.066
+setLayerPreference node_misc -isSelectable 0
+setLayerPreference node_misc -isVisible 1
+setLayerPreference node_misc -isSelectable 1
+deselectAll
+selectInst I_BLENDER_0/U6632
+setObjFPlanBox Instance I_BLENDER_0/U6632 50.524 546.143 52.196 547.815
+deselectAll
+selectInst I_SDRAM_TOP/I_SDRAM_READ_FIFO_SD_FIFO_RAM_0
+setObjFPlanBox Instance I_SDRAM_TOP/I_SDRAM_READ_FIFO_SD_FIFO_RAM_0 824.782 460.659 956.188 555.567
+setObjFPlanBox Instance I_SDRAM_TOP/I_SDRAM_READ_FIFO_SD_FIFO_RAM_0 820.024 401.974 951.43 496.882
+deselectAll
+selectInst I_SDRAM_TOP/I_SDRAM_WRITE_FIFO_SD_FIFO_RAM_1
+setObjFPlanBox Instance I_SDRAM_TOP/I_SDRAM_WRITE_FIFO_SD_FIFO_RAM_1 908.541 270.555 1039.947 365.463
+setObjFPlanBox Instance I_SDRAM_TOP/I_SDRAM_WRITE_FIFO_SD_FIFO_RAM_1 830.824 272.141 962.23 367.049
+deselectAll
+selectInst I_SDRAM_TOP/I_SDRAM_WRITE_FIFO_SD_FIFO_RAM_0
+setObjFPlanBox Instance I_SDRAM_TOP/I_SDRAM_WRITE_FIFO_SD_FIFO_RAM_0 859.373 161.511 990.779 256.419
+deselectAll
+selectInst I_SDRAM_TOP/I_SDRAM_IF/mega_shift_0_reg_13__9_
+setObjFPlanBox Instance I_SDRAM_TOP/I_SDRAM_IF/mega_shift_0_reg_13__9_ 355.555 407.492 361.027 409.164
+deselectAll
+selectInst I_PCI_TOP/I_PCI_READ_FIFO_PCI_FIFO_RAM_1
+setObjFPlanBox Instance I_PCI_TOP/I_PCI_READ_FIFO_PCI_FIFO_RAM_1 16.1 718.906 70.705 773.841
+setObjFPlanBox Instance I_PCI_TOP/I_PCI_READ_FIFO_PCI_FIFO_RAM_1 12.928 717.32 67.533 772.255
+deselectAll
+selectInst I_PCI_TOP/I_PCI_READ_FIFO_PCI_FIFO_RAM_2
+setObjFPlanBox Instance I_PCI_TOP/I_PCI_READ_FIFO_PCI_FIFO_RAM_2 81.161 708.643 135.766 763.578
+setObjFPlanBox Instance I_PCI_TOP/I_PCI_READ_FIFO_PCI_FIFO_RAM_2 76.403 716.573 131.008 771.508
+setObjFPlanBox Instance I_PCI_TOP/I_PCI_READ_FIFO_PCI_FIFO_RAM_2 184.256 713.401 238.861 768.336
+setObjFPlanBox Instance I_PCI_TOP/I_PCI_READ_FIFO_PCI_FIFO_RAM_2 76.403 713.401 131.008 768.336
+deselectAll
+selectInst I_PCI_TOP/I_PCI_WRITE_FIFO_PCI_FIFO_RAM_4
+setObjFPlanBox Instance I_PCI_TOP/I_PCI_WRITE_FIFO_PCI_FIFO_RAM_4 140.998 710.128 195.603 765.063
+deselectAll
+selectInst I_PCI_TOP/I_PCI_WRITE_FIFO_PCI_FIFO_RAM_2
+setObjFPlanBox Instance I_PCI_TOP/I_PCI_WRITE_FIFO_PCI_FIFO_RAM_2 204.857 713.454 259.792 768.059
+setObjFPlanBox Instance I_PCI_TOP/I_PCI_WRITE_FIFO_PCI_FIFO_RAM_2 190.583 575.465 245.518 630.07
+setObjFPlanBox Instance I_PCI_TOP/I_PCI_WRITE_FIFO_PCI_FIFO_RAM_2 206.444 713.454 261.379 768.059
+setObjFPlanBox Instance I_PCI_TOP/I_PCI_WRITE_FIFO_PCI_FIFO_RAM_2 208.03 740.418 262.965 795.023
+setObjFPlanBox Instance I_PCI_TOP/I_PCI_WRITE_FIFO_PCI_FIFO_RAM_2 209.616 703.938 264.551 758.543
+deselectAll
+selectInst I_PCI_TOP/I_PCI_WRITE_FIFO_PCI_FIFO_RAM_4
+setObjFPlanBox Instance I_PCI_TOP/I_PCI_WRITE_FIFO_PCI_FIFO_RAM_4 142.584 702.198 197.189 757.133
+flipOrRotateObject -rotate R90 -group
+flipOrRotateObject -rotate R270 -group
+flipOrRotateObject -flip MX -group
+flipOrRotateObject -flip MY -group
+setObjFPlanBox Instance I_PCI_TOP/I_PCI_WRITE_FIFO_PCI_FIFO_RAM_4 136.24 746.609 190.845 801.544
+setObjFPlanBox Instance I_PCI_TOP/I_PCI_WRITE_FIFO_PCI_FIFO_RAM_4 137.826 706.957 192.431 761.892
+deselectAll
+selectInst I_PCI_TOP/I_PCI_WRITE_FIFO_PCI_FIFO_RAM_5
+setObjFPlanBox Instance I_PCI_TOP/I_PCI_WRITE_FIFO_PCI_FIFO_RAM_5 18.21 639.08 73.145 693.685
+setObjFPlanBox Instance I_PCI_TOP/I_PCI_WRITE_FIFO_PCI_FIFO_RAM_5 15.037 634.322 69.972 688.927
+deselectAll
+selectInst I_PCI_TOP/I_PCI_WRITE_FIFO_PCI_FIFO_RAM_1
+setObjFPlanBox Instance I_PCI_TOP/I_PCI_WRITE_FIFO_PCI_FIFO_RAM_1 79.049 635.735 133.984 690.34
+deselectAll
+selectInst I_PCI_TOP/I_PCI_WRITE_FIFO_PCI_FIFO_RAM_6
+setObjFPlanBox Instance I_PCI_TOP/I_PCI_WRITE_FIFO_PCI_FIFO_RAM_6 145.757 637.321 200.692 691.926
+deselectAll
+selectInst I_PCI_TOP/I_PCI_WRITE_FIFO_PCI_FIFO_RAM_7
+setObjFPlanBox Instance I_PCI_TOP/I_PCI_WRITE_FIFO_PCI_FIFO_RAM_7 215.392 637.685 270.327 692.29
+deselectAll
+selectInst I_PCI_TOP/I_PCI_WRITE_FIFO_PCI_FIFO_RAM_8
+setObjFPlanBox Instance I_PCI_TOP/I_PCI_WRITE_FIFO_PCI_FIFO_RAM_8 9.2 568.063 64.135 622.668
+deselectAll
+selectInst I_PCI_TOP/I_PCI_READ_FIFO_PCI_FIFO_RAM_3
+setObjFPlanBox Instance I_PCI_TOP/I_PCI_READ_FIFO_PCI_FIFO_RAM_3 84.738 556.266 139.673 610.871
+setObjFPlanBox Instance I_PCI_TOP/I_PCI_READ_FIFO_PCI_FIFO_RAM_3 65.705 543.577 120.64 598.182
+setObjFPlanBox Instance I_PCI_TOP/I_PCI_READ_FIFO_PCI_FIFO_RAM_3 72.05 561.024 126.985 615.629
+deselectAll
+selectInst I_PCI_TOP/I_PCI_READ_FIFO_PCI_FIFO_RAM_8
+setObjFPlanBox Instance I_PCI_TOP/I_PCI_READ_FIFO_PCI_FIFO_RAM_8 9.854 500.251 64.459 555.186
+deselectAll
+selectInst I_PCI_TOP/I_PCI_WRITE_FIFO_PCI_FIFO_RAM_3
+setObjFPlanBox Instance I_PCI_TOP/I_PCI_WRITE_FIFO_PCI_FIFO_RAM_3 72.286 488.231 127.221 542.836
+deselectAll
+selectInst I_PCI_TOP/I_PCI_READ_FIFO_PCI_FIFO_RAM_5
+setObjFPlanBox Instance I_PCI_TOP/I_PCI_READ_FIFO_PCI_FIFO_RAM_5 22.251 433.914 76.856 488.849
+deselectAll
+selectInst I_PCI_TOP/I_PCI_READ_FIFO_PCI_FIFO_RAM_4
+setObjFPlanBox Instance I_PCI_TOP/I_PCI_READ_FIFO_PCI_FIFO_RAM_4 84.625 408.197 139.23 463.132
+deselectAll
+selectInst I_PCI_TOP/I_PCI_READ_FIFO_PCI_FIFO_RAM_6
+setObjFPlanBox Instance I_PCI_TOP/I_PCI_READ_FIFO_PCI_FIFO_RAM_6 1.031 374.891 55.636 429.826
+setObjFPlanBox Instance I_PCI_TOP/I_PCI_READ_FIFO_PCI_FIFO_RAM_6 20.064 344.755 74.669 399.69
+deselectAll
+selectInst I_PCI_TOP/I_PCI_READ_FIFO_PCI_FIFO_RAM_7
+setObjFPlanBox Instance I_PCI_TOP/I_PCI_READ_FIFO_PCI_FIFO_RAM_7 81.836 345.132 136.771 399.737
+deselectAll
+selectInst I_SDRAM_TOP/I_SDRAM_READ_FIFO_SD_FIFO_RAM_0
+setObjFPlanBox Instance I_SDRAM_TOP/I_SDRAM_READ_FIFO_SD_FIFO_RAM_0 103.115 76.827 234.521 171.735
+setObjFPlanBox Instance I_SDRAM_TOP/I_SDRAM_READ_FIFO_SD_FIFO_RAM_0 6.364 11.798 137.77 106.706
+setObjFPlanBox Instance I_SDRAM_TOP/I_SDRAM_READ_FIFO_SD_FIFO_RAM_0 14.295 16.556 145.701 111.464
+deselectAll
+selectInst I_SDRAM_TOP/I_SDRAM_WRITE_FIFO_SD_FIFO_RAM_1
+setObjFPlanBox Instance I_SDRAM_TOP/I_SDRAM_WRITE_FIFO_SD_FIFO_RAM_1 221.769 38.987 353.175 133.895
+setObjFPlanBox Instance I_SDRAM_TOP/I_SDRAM_WRITE_FIFO_SD_FIFO_RAM_1 151.982 5.679 283.388 100.587
+setObjFPlanBox Instance I_SDRAM_TOP/I_SDRAM_WRITE_FIFO_SD_FIFO_RAM_1 158.326 21.54 289.732 116.448
+setObjFPlanBox Instance I_SDRAM_TOP/I_SDRAM_WRITE_FIFO_SD_FIFO_RAM_1 158.326 12.024 289.732 106.932
+setObjFPlanBox Instance I_SDRAM_TOP/I_SDRAM_WRITE_FIFO_SD_FIFO_RAM_1 158.326 16.782 289.732 111.69
+setObjFPlanBox Instance I_SDRAM_TOP/I_SDRAM_WRITE_FIFO_SD_FIFO_RAM_1 166.256 15.196 297.662 110.104
+setObjFPlanBox Instance I_SDRAM_TOP/I_SDRAM_WRITE_FIFO_SD_FIFO_RAM_1 174.187 16.782 305.593 111.69
+setObjFPlanBox Instance I_SDRAM_TOP/I_SDRAM_WRITE_FIFO_SD_FIFO_RAM_1 164.67 19.954 296.076 114.862
+deselectAll
+selectInst I_SDRAM_TOP/I_SDRAM_WRITE_FIFO_SD_FIFO_RAM_0
+setObjFPlanBox Instance I_SDRAM_TOP/I_SDRAM_WRITE_FIFO_SD_FIFO_RAM_0 85.366 172.614 216.772 267.522
+deselectAll
+selectInst I_PCI_TOP/U2584
+setObjFPlanBox Instance I_PCI_TOP/U2584 97.921 222.673 99.137 224.345
+setObjFPlanBox Instance I_PCI_TOP/U2584 147.057 242.995 148.273 244.667
+setObjFPlanBox Instance I_PCI_TOP/U2584 72.438 167.895 73.654 169.567
+deselectAll
+selectInst I_SDRAM_TOP/I_SDRAM_WRITE_FIFO_SD_FIFO_RAM_0
+setObjFPlanBox Instance I_SDRAM_TOP/I_SDRAM_WRITE_FIFO_SD_FIFO_RAM_0 12.406 126.617 143.812 221.525
+deselectAll
+selectInst I_SDRAM_TOP/I_SDRAM_READ_FIFO_SD_FIFO_RAM_1
+setObjFPlanBox Instance I_SDRAM_TOP/I_SDRAM_READ_FIFO_SD_FIFO_RAM_1 164.974 126.883 296.38 221.791
+deselectAll
+selectInst I_PCI_TOP/U5630
+setObjFPlanBox Instance I_PCI_TOP/U5630 271.881 329.793 274.769 331.465
+deselectAll
+selectInst I_CONTEXT_MEM/FE_OFC2662_net_pci_sys_read_data_2
+setObjFPlanBox Instance I_CONTEXT_MEM/FE_OFC2662_net_pci_sys_read_data_2 51.7 465.074 53.524 466.746
+deselectAll
+selectInst I_PCI_TOP/I_PCI_READ_FIFO_PCI_FIFO_RAM_5
+setObjFPlanBox Instance I_PCI_TOP/I_PCI_READ_FIFO_PCI_FIFO_RAM_5 12.735 427.57 67.34 482.505
+deselectAll
+selectInst I_PCI_TOP/I_PCI_READ_FIFO_PCI_FIFO_RAM_1
+setObjFPlanBox Instance I_PCI_TOP/I_PCI_READ_FIFO_PCI_FIFO_RAM_1 12.928 714.148 67.533 769.083
+setObjFPlanBox Instance I_PCI_TOP/I_PCI_READ_FIFO_PCI_FIFO_RAM_1 50.994 714.148 105.599 769.083
+deselectAll
+selectInst I_PCI_TOP/I_PCI_READ_FIFO_PCI_FIFO_RAM_2
+setObjFPlanBox Instance I_PCI_TOP/I_PCI_READ_FIFO_PCI_FIFO_RAM_2 17.718 707.056 72.323 761.991
+setObjFPlanBox Instance I_PCI_TOP/I_PCI_READ_FIFO_PCI_FIFO_RAM_2 12.959 703.884 67.564 758.819
+deselectAll
+selectInst I_PCI_TOP/I_PCI_READ_FIFO_PCI_FIFO_RAM_1
+setObjFPlanBox Instance I_PCI_TOP/I_PCI_READ_FIFO_PCI_FIFO_RAM_1 71.613 712.562 126.218 767.497
+deselectAll
+selectInst I_PCI_TOP/I_PCI_READ_FIFO_PCI_FIFO_RAM_2
+setObjFPlanBox Instance I_PCI_TOP/I_PCI_READ_FIFO_PCI_FIFO_RAM_2 11.373 710.228 65.978 765.163
+setObjFPlanBox Instance I_PCI_TOP/I_PCI_READ_FIFO_PCI_FIFO_RAM_2 11.373 713.401 65.978 768.336
+deselectAll
+selectInst I_PCI_TOP/I_PCI_READ_FIFO_PCI_FIFO_RAM_1
+deselectAll
+selectInst I_PCI_TOP/I_PCI_READ_FIFO_PCI_FIFO_RAM_2
+setObjFPlanBox Instance I_PCI_TOP/I_PCI_READ_FIFO_PCI_FIFO_RAM_2 57.37 713.401 111.975 768.336
+deselectAll
+selectInst I_PCI_TOP/I_PCI_READ_FIFO_PCI_FIFO_RAM_1
+setObjFPlanBox Instance I_PCI_TOP/I_PCI_READ_FIFO_PCI_FIFO_RAM_1 8.17 715.734 62.775 770.669
+deselectAll
+selectInst I_PCI_TOP/I_PCI_READ_FIFO_PCI_FIFO_RAM_2
+setObjFPlanBox Instance I_PCI_TOP/I_PCI_READ_FIFO_PCI_FIFO_RAM_2 70.058 711.815 124.663 766.75
+deselectAll
+selectInst I_PCI_TOP/I_PCI_READ_FIFO_PCI_FIFO_RAM_1
+deselectAll
+selectInst I_PCI_TOP/I_PCI_READ_FIFO_PCI_FIFO_RAM_2
+setObjFPlanBox Instance I_PCI_TOP/I_PCI_READ_FIFO_PCI_FIFO_RAM_2 12.959 699.127 67.564 754.062
+undo
+uiSetTool select
+selectInst I_PCI_TOP/I_PCI_READ_FIFO_PCI_FIFO_RAM_1
+selectInst I_PCI_TOP/I_PCI_READ_FIFO_PCI_FIFO_RAM_2
+selectInst I_PCI_TOP/I_PCI_READ_FIFO_PCI_FIFO_RAM_2
+alignObject -side top
+undo
+alignObject -side bottom
+spaceObject -fixSide left -space 15
+deselectAll
+selectInst I_PCI_TOP/I_PCI_WRITE_FIFO_PCI_FIFO_RAM_4
+selectInst I_PCI_TOP/I_PCI_READ_FIFO_PCI_FIFO_RAM_2
+alignObject -side bottom
+spaceObject -fixSide left -space 15
+deselectAll
+selectInst I_PCI_TOP/I_PCI_WRITE_FIFO_PCI_FIFO_RAM_2
+selectInst I_PCI_TOP/I_PCI_WRITE_FIFO_PCI_FIFO_RAM_4
+alignObject -side bottom
+spaceObject -fixSide left -space 15
+deselectAll
+selectInst I_PCI_TOP/I_PCI_WRITE_FIFO_PCI_FIFO_RAM_5
+selectInst I_SDRAM_TOP/I_SDRAM_IF/DQ_in_0_reg_7_
+selectInst I_SDRAM_TOP/I_SDRAM_IF/DQ_in_0_reg_7_
+selectInst I_PCI_TOP/I_PCI_WRITE_FIFO_PCI_FIFO_RAM_1
+alignObject -side bottom
+spaceObject -fixSide left -space 15
+alignObject -side right
+alignObject -side left
+undo
+undo
+alignObject -side bottom
+spaceObject -fixSide left -space 15
+spaceObject -fixSide left -space 15
+spaceObject -fixSide left -space 15
+deselectAll
+selectInst I_PCI_TOP/I_PCI_WRITE_FIFO_PCI_FIFO_RAM_1
+deselectAll
+selectInst I_PCI_TOP/I_PCI_WRITE_FIFO_PCI_FIFO_RAM_5
+selectInst I_PCI_TOP/I_PCI_WRITE_FIFO_PCI_FIFO_RAM_1
+alignObject -side bottom
+spaceObject -fixSide center -space 15
+alignObject -side bottom
+panPage 1 0
+fit
+deselectAll
+selectInst I_PCI_TOP/I_PCI_WRITE_FIFO_PCI_FIFO_RAM_6
+selectInst I_PCI_TOP/I_PCI_WRITE_FIFO_PCI_FIFO_RAM_7
+alignObject -side bottom
+spaceObject -fixSide left -space 15
+spaceObject -fixSide left -space 15
+deselectAll
+selectInst I_PCI_TOP/I_PCI_WRITE_FIFO_PCI_FIFO_RAM_1
+selectInst I_PCI_TOP/I_PCI_WRITE_FIFO_PCI_FIFO_RAM_6
+spaceObject -fixSide left -space 15
+deselectAll
+selectInst I_PCI_TOP/I_PCI_WRITE_FIFO_PCI_FIFO_RAM_5
+selectInst I_PCI_TOP/I_PCI_WRITE_FIFO_PCI_FIFO_RAM_1
+spaceObject -fixSide left -space 15
+deselectAll
+selectInst I_PCI_TOP/I_PCI_WRITE_FIFO_PCI_FIFO_RAM_6
+selectInst I_PCI_TOP/I_PCI_WRITE_FIFO_PCI_FIFO_RAM_7
+spaceObject -fixSide left -space 15
+deselectAll
+selectInst I_PCI_TOP/I_PCI_WRITE_FIFO_PCI_FIFO_RAM_8
+spaceObject -fixSide left -space 15
+spaceObject -fixSide left -space 15
+deselectAll
+selectInst I_PCI_TOP/I_PCI_READ_FIFO_PCI_FIFO_RAM_3
+deselectAll
+selectInst I_PCI_TOP/I_PCI_WRITE_FIFO_PCI_FIFO_RAM_8
+selectInst I_PCI_TOP/I_PCI_READ_FIFO_PCI_FIFO_RAM_3
+alignObject -side bottom
+spaceObject -fixSide left -space 15
+spaceObject -fixSide left -space 15
+deselectAll
+selectInst I_PCI_TOP/I_PCI_WRITE_FIFO_PCI_FIFO_RAM_5
+selectInst I_PCI_TOP/I_PCI_WRITE_FIFO_PCI_FIFO_RAM_8
+alignObject -side left
+alignObject -side right
+alignObject -side right
+alignObject -side center
+deselectAll
+selectInst I_BLENDER_0/U664
+deselectAll
+selectInst I_PCI_TOP/I_PCI_WRITE_FIFO_PCI_FIFO_RAM_8
+selectInst I_PCI_TOP/I_PCI_READ_FIFO_PCI_FIFO_RAM_3
+alignObject -side bottom
+spaceObject -fixSide left -space 15
+deselectAll
+selectInst I_BLENDER_1/U6881
+deselectAll
+selectInst I_BLENDER_1/U8281
+deselectAll
+selectInst I_BLENDER_1/U8042
+deselectAll
+selectInst I_BLENDER_1/U7246
+selectInst I_PCI_TOP/I_PCI_WRITE_FIFO_PCI_FIFO_RAM_3
+selectInst I_BLENDER_1/U8152
+deselectAll
+selectInst I_BLENDER_1/mega_shift_reg_1__15_
+deselectAll
+selectInst I_PCI_TOP/I_PCI_WRITE_FIFO_PCI_FIFO_RAM_8
+selectInst I_PCI_TOP/I_PCI_READ_FIFO_PCI_FIFO_RAM_8
+alignObject -side bottom
+alignObject -side bottom
+deselectAll
+selectInst I_PCI_TOP/I_PCI_READ_FIFO_PCI_FIFO_RAM_8
+gui_select -append -rect {33.95600 524.05600 54.57500 577.98300}
+deselectAll
+selectInst I_SDRAM_TOP/I_SDRAM_IF/U3991
+gui_select -rect {52.98900 527.22800 49.81700 571.63800}
+deselectAll
+deselectAll
+selectInst I_BLENDER_1/U7467
+gui_select -rect {35.54200 547.84700 37.12800 579.56900}
+deselectAll
+uiSetTool move
+deselectAll
+selectInst I_BLENDER_1/U8157
+setObjFPlanBox Instance I_BLENDER_1/U8157 34.405 582.451 35.925 584.123
+setObjFPlanBox Instance I_BLENDER_1/U8157 47.041 543.79 48.561 545.462
+setObjFPlanBox Instance I_BLENDER_1/U8157 40.624 529.125 42.144 530.797
+setObjFPlanBox Instance I_BLENDER_1/U8157 69.133 537.869 70.653 539.541
+uiSetTool move
+setObjFPlanBox Instance I_BLENDER_1/U8157 40.611 549.486 42.131 551.158
+setObjFPlanBox Instance I_BLENDER_1/U8157 178.573 467.612 180.093 469.284
+deselectAll
+selectInst I_BLENDER_0/U6640
+setObjFPlanBox Instance I_BLENDER_0/U6640 50.418 565.215 51.634 566.887
+deselectAll
+selectInst I_PCI_TOP/I_PCI_READ_FIFO_PCI_FIFO_RAM_3
+setObjFPlanBox Instance I_PCI_TOP/I_PCI_READ_FIFO_PCI_FIFO_RAM_3 109.27 572.127 164.205 626.732
+deselectAll
+selectInst I_PCI_TOP/I_PCI_READ_FIFO_PCI_FIFO_RAM_8
+setObjFPlanBox Instance I_PCI_TOP/I_PCI_READ_FIFO_PCI_FIFO_RAM_8 8.268 551.006 62.873 605.941
+setObjFPlanBox Instance I_PCI_TOP/I_PCI_READ_FIFO_PCI_FIFO_RAM_8 19.371 566.867 73.976 621.802
+deselectAll
+selectInst I_PCI_TOP/I_PCI_WRITE_FIFO_PCI_FIFO_RAM_5
+setObjFPlanBox Instance I_PCI_TOP/I_PCI_WRITE_FIFO_PCI_FIFO_RAM_5 21.888 628.93 76.823 683.535
+setObjFPlanBox Instance I_PCI_TOP/I_PCI_WRITE_FIFO_PCI_FIFO_RAM_5 21.888 633.688 76.823 688.293
+spaceObject -fixSide right -space 15
+deselectAll
+selectInst I_PCI_TOP/I_PCI_WRITE_FIFO_PCI_FIFO_RAM_1
+setObjFPlanBox Instance I_PCI_TOP/I_PCI_WRITE_FIFO_PCI_FIFO_RAM_1 159.756 630.516 214.691 685.121
+setObjFPlanBox Instance I_PCI_TOP/I_PCI_WRITE_FIFO_PCI_FIFO_RAM_1 94.726 635.274 149.661 689.879
+deselectAll
+selectInst I_PCI_TOP/I_PCI_WRITE_FIFO_PCI_FIFO_RAM_6
+setObjFPlanBox Instance I_PCI_TOP/I_PCI_WRITE_FIFO_PCI_FIFO_RAM_6 161.49 634.149 216.425 688.754
+deselectAll
+selectInst I_PCI_TOP/I_PCI_WRITE_FIFO_PCI_FIFO_RAM_1
+setObjFPlanBox Instance I_PCI_TOP/I_PCI_WRITE_FIFO_PCI_FIFO_RAM_1 91.554 632.102 146.489 686.707
+deselectAll
+selectInst I_PCI_TOP/I_PCI_WRITE_FIFO_PCI_FIFO_RAM_6
+setObjFPlanBox Instance I_PCI_TOP/I_PCI_WRITE_FIFO_PCI_FIFO_RAM_6 164.662 632.563 219.597 687.168
+deselectAll
+selectInst I_PCI_TOP/I_PCI_WRITE_FIFO_PCI_FIFO_RAM_7
+setObjFPlanBox Instance I_PCI_TOP/I_PCI_WRITE_FIFO_PCI_FIFO_RAM_7 236.183 629.39 291.118 683.995
+setObjFPlanBox Instance I_PCI_TOP/I_PCI_WRITE_FIFO_PCI_FIFO_RAM_7 229.839 634.149 284.774 688.754
+setObjFPlanBox Instance I_PCI_TOP/I_PCI_WRITE_FIFO_PCI_FIFO_RAM_7 234.597 630.976 289.532 685.581
+deselectAll
+selectInst I_PCI_TOP/I_PCI_READ_FIFO_PCI_FIFO_RAM_8
+setObjFPlanBox Instance I_PCI_TOP/I_PCI_READ_FIFO_PCI_FIFO_RAM_8 24.129 566.867 78.734 621.802
+setObjFPlanBox Instance I_PCI_TOP/I_PCI_READ_FIFO_PCI_FIFO_RAM_8 20.957 566.867 75.562 621.802
+deselectAll
+selectInst I_PCI_TOP/I_PCI_READ_FIFO_PCI_FIFO_RAM_3
+setObjFPlanBox Instance I_PCI_TOP/I_PCI_READ_FIFO_PCI_FIFO_RAM_3 93.409 565.783 148.344 620.388
+setObjFPlanBox Instance I_PCI_TOP/I_PCI_READ_FIFO_PCI_FIFO_RAM_3 88.651 565.783 143.586 620.388
+deselectAll
+selectInst I_PCI_TOP/I_PCI_READ_FIFO_PCI_FIFO_RAM_1
+deselectAll
+selectInst I_PCI_TOP/I_PCI_WRITE_FIFO_PCI_FIFO_RAM_5
+uiSetTool select
+selectInst I_PCI_TOP/I_PCI_READ_FIFO_PCI_FIFO_RAM_1
+selectInst I_PCI_TOP/I_PCI_WRITE_FIFO_PCI_FIFO_RAM_5
+alignObject -side right
+spaceObject -fixSide top -space 15
+uiSetTool select
+deselectAll
+selectInst I_PCI_TOP/I_PCI_READ_FIFO_PCI_FIFO_RAM_2
+selectInst I_PCI_TOP/I_PCI_WRITE_FIFO_PCI_FIFO_RAM_1
+spaceObject -fixSide top -space 15
+deselectAll
+selectInst I_PCI_TOP/I_PCI_WRITE_FIFO_PCI_FIFO_RAM_5
+selectInst I_PCI_TOP/I_PCI_WRITE_FIFO_PCI_FIFO_RAM_1
+spaceObject -fixSide left -space 15
+deselectAll
+selectInst I_PCI_TOP/I_PCI_WRITE_FIFO_PCI_FIFO_RAM_4
+selectInst I_PCI_TOP/I_PCI_WRITE_FIFO_PCI_FIFO_RAM_6
+spaceObject -fixSide top -space 15
+deselectAll
+selectInst I_PCI_TOP/I_PCI_WRITE_FIFO_PCI_FIFO_RAM_1
+selectInst I_PCI_TOP/I_PCI_WRITE_FIFO_PCI_FIFO_RAM_6
+spaceObject -fixSide left -space 15
+deselectAll
+selectInst I_PCI_TOP/I_PCI_WRITE_FIFO_PCI_FIFO_RAM_2
+selectInst I_PCI_TOP/I_PCI_WRITE_FIFO_PCI_FIFO_RAM_7
+spaceObject -fixSide top -space 15
+deselectAll
+selectInst I_PCI_TOP/I_PCI_READ_FIFO_PCI_FIFO_RAM_1
+selectInst I_PCI_TOP/I_PCI_READ_FIFO_PCI_FIFO_RAM_2
+selectInst I_PCI_TOP/I_PCI_WRITE_FIFO_PCI_FIFO_RAM_4
+selectInst I_PCI_TOP/I_PCI_WRITE_FIFO_PCI_FIFO_RAM_2
+alignObject -side top
+deselectAll
+selectInst I_BLENDER_0/U5726
+deselectAll
+selectInst I_PCI_TOP/I_PCI_WRITE_FIFO_PCI_FIFO_RAM_5
+selectInst I_PCI_TOP/I_PCI_READ_FIFO_PCI_FIFO_RAM_1
+spaceObject -fixSide top -space 15
+deselectAll
+selectInst I_PCI_TOP/I_PCI_WRITE_FIFO_PCI_FIFO_RAM_1
+selectInst I_PCI_TOP/I_PCI_WRITE_FIFO_PCI_FIFO_RAM_6
+selectInst I_PCI_TOP/I_PCI_WRITE_FIFO_PCI_FIFO_RAM_7
+selectInst I_PCI_TOP/I_PCI_WRITE_FIFO_PCI_FIFO_RAM_7
+selectInst I_PCI_TOP/I_PCI_WRITE_FIFO_PCI_FIFO_RAM_5
+alignObject -side bottom
+deselectAll
+selectInst I_PCI_TOP/I_PCI_WRITE_FIFO_PCI_FIFO_RAM_5
+selectInst I_PCI_TOP/I_PCI_READ_FIFO_PCI_FIFO_RAM_8
+spaceObject -fixSide top -space 15
+alignObject -side right
+uiSetTool select
+deselectAll
+selectInst I_PCI_TOP/I_PCI_WRITE_FIFO_PCI_FIFO_RAM_1
+selectInst I_PCI_TOP/I_PCI_READ_FIFO_PCI_FIFO_RAM_3
+alignObject -side right
+spaceObject -fixSide top -space 15
+deselectAll
+selectInst I_PCI_TOP/I_PCI_WRITE_FIFO_PCI_FIFO_RAM_8
+uiSetTool moveWire
+deselectAll
+selectInst I_PCI_TOP/I_PCI_WRITE_FIFO_PCI_FIFO_RAM_8
+uiSetTool move
+deselectAll
+selectInst I_BLENDER_1/U7466
+setObjFPlanBox Instance I_BLENDER_1/U7466 32.891 529.852 34.411 531.524
+deselectAll
+selectInst I_BLENDER_0/U5561
+setObjFPlanBox Instance I_BLENDER_0/U5561 105.561 435.962 108.145 437.634
+deselectAll
+selectInst I_BLENDER_0/U4909
+setObjFPlanBox Instance I_BLENDER_0/U4909 105.065 357.431 106.281 359.103
+deselectAll
+selectInst I_PCI_TOP/I_PCI_READ_FIFO_PCI_FIFO_RAM_4
+uiSetTool move
+setObjFPlanBox Instance I_PCI_TOP/I_PCI_READ_FIFO_PCI_FIFO_RAM_4 235.302 555.703 289.907 610.638
+deselectAll
+selectInst I_BLENDER_0/s2_op1_reg_14_
+deselectAll
+selectInst I_BLENDER_0/s1_op1_reg_11_
+uiSetTool select
+deselectAll
+selectInst I_BLENDER_0/s2_op1_reg_18_
+deselectAll
+selectInst I_PCI_TOP/I_PCI_WRITE_FIFO_PCI_FIFO_RAM_3
+uiSetTool move
+deselectAll
+selectInst I_BLENDER_0/U5933
+setObjFPlanBox Instance I_BLENDER_0/U5933 209.429 594.452 211.101 596.124
+deselectAll
+selectInst I_BLENDER_0/s1_op2_reg_5_
+deselectAll
+selectInst I_BLENDER_1/FE_OFC1454_sys_rst_n
+uiSetTool select
+deselectAll
+selectInst I_BLENDER_0/U6247
+deselectAll
+selectInst I_PCI_TOP/I_PCI_WRITE_FIFO_PCI_FIFO_RAM_3
+uiSetTool move
+setObjFPlanBox Instance I_PCI_TOP/I_PCI_WRITE_FIFO_PCI_FIFO_RAM_3 165.865 561.191 220.8 615.796
+deselectAll
+selectInst I_PCI_TOP/I_PCI_READ_FIFO_PCI_FIFO_RAM_5
+setObjFPlanBox Instance I_PCI_TOP/I_PCI_READ_FIFO_PCI_FIFO_RAM_5 92.039 481.496 146.644 536.431
+deselectAll
+selectInst FE_OFC2199_net_blender_op_3
+setObjFPlanBox Instance FE_OFC2199_net_blender_op_3 9.477 540.354 10.693 542.026
+deselectAll
+selectInst I_PCI_TOP/I_PCI_WRITE_FIFO_PCI_FIFO_RAM_8
+setObjFPlanBox Instance I_PCI_TOP/I_PCI_WRITE_FIFO_PCI_FIFO_RAM_8 21.889 481.218 76.824 535.823
+deselectAll
+selectInst I_PCI_TOP/I_PCI_READ_FIFO_PCI_FIFO_RAM_6
+setObjFPlanBox Instance I_PCI_TOP/I_PCI_READ_FIFO_PCI_FIFO_RAM_6 169.156 487.502 223.761 542.437
+deselectAll
+selectInst I_PCI_TOP/I_PCI_READ_FIFO_PCI_FIFO_RAM_7
+setObjFPlanBox Instance I_PCI_TOP/I_PCI_READ_FIFO_PCI_FIFO_RAM_7 246.789 475.19 301.724 529.795
+uiSetTool select
+deselectAll
+selectInst I_PCI_TOP/I_PCI_READ_FIFO_PCI_FIFO_RAM_8
+selectInst I_BLENDER_1/U8024
+selectInst I_BLENDER_1/U6824
+selectInst I_PCI_TOP/I_PCI_WRITE_FIFO_PCI_FIFO_RAM_8
+spaceObject -fixSide top -space 15
+undo
+spaceObject -fixSide top -space 15
+deselectAll
+uiSetTool select
+selectInst I_PCI_TOP/I_PCI_READ_FIFO_PCI_FIFO_RAM_8
+selectInst I_BLENDER_0/R_332
+selectInst I_PCI_TOP/I_PCI_WRITE_FIFO_PCI_FIFO_RAM_8
+spaceObject -fixSide top -space 15
+zoomIn
+panPage -1 0
+panPage -1 0
+zoomBox 51.34700 215.20600 392.82100 551.70400
+zoomBox 28.62600 177.77700 430.36000 573.65700
+panPage -1 0
+panPage 0 1
+deselectAll
+uiSetTool select
+selectInst I_PCI_TOP/I_PCI_READ_FIFO_PCI_FIFO_RAM_8
+selectInst I_PCI_TOP/I_PCI_WRITE_FIFO_PCI_FIFO_RAM_8
+spaceObject -fixSide top -space 15
+alignObject -side left
+undo
+alignObject -side right
+deselectAll
+selectInst I_PCI_TOP/I_PCI_READ_FIFO_PCI_FIFO_RAM_3
+selectInst I_BLENDER_0/s2_op1_reg_18_
+deselectAll
+selectInst I_BLENDER_0/U6515
+uiSetTool select
+deselectAll
+selectInst I_PCI_TOP/I_PCI_READ_FIFO_PCI_FIFO_RAM_3
+selectInst I_BLENDER_0/s1_op2_reg_31_
+selectInst I_PCI_TOP/I_PCI_READ_FIFO_PCI_FIFO_RAM_5
+deselectAll
+selectInst I_PCI_TOP/I_PCI_READ_FIFO_PCI_FIFO_RAM_3
+selectInst I_BLENDER_0/U8807
+zoomBox 9.44700 401.67700 219.15500 608.32900
+deselectAll
+selectInst I_PCI_TOP/I_PCI_READ_FIFO_PCI_FIFO_RAM_5
+selectInst I_PCI_TOP/I_PCI_READ_FIFO_PCI_FIFO_RAM_3
+spaceObject -fixSide top -space 15
+spaceObject -fixSide left -space 15
+undo
+alignObject -side right
+deselectAll
+selectInst I_SDRAM_TOP/I_SDRAM_READ_FIFO_SD_FIFO_CTL_U2_syncff_reg_6_
+uiSetTool select
+deselectAll
+selectInst I_PCI_TOP/I_PCI_READ_FIFO_PCI_FIFO_RAM_6
+deselectAll
+selectInst I_PCI_TOP/I_PCI_WRITE_FIFO_PCI_FIFO_RAM_3
+deselectAll
+selectInst I_SDRAM_TOP/I_SDRAM_READ_FIFO_SD_FIFO_CTL_U2_syncff_reg_5_
+deselectAll
+selectInst I_PCI_TOP/I_PCI_READ_FIFO_PCI_FIFO_RAM_6
+selectInst I_PCI_TOP/I_PCI_WRITE_FIFO_PCI_FIFO_RAM_3
+alignObject -side left
+spaceObject -fixSide top -space 15
+spaceObject -fixSide left -space 15
+undo
+deselectAll
+uiSetTool select
+selectInst I_BLENDER_0/R_692
+deselectAll
+selectInst I_PCI_TOP/I_PCI_READ_FIFO_PCI_FIFO_RAM_5
+selectInst I_SDRAM_TOP/U203
+selectInst I_SDRAM_TOP/U205
+selectInst I_SDRAM_TOP/FE_OFC1779_n1787
+deselectAll
+selectInst I_SDRAM_TOP/I_SDRAM_READ_FIFO_SD_FIFO_CTL_U2_syncff_reg_4_
+deselectAll
+selectInst I_PCI_TOP/I_PCI_READ_FIFO_PCI_FIFO_RAM_6
+selectInst I_PCI_TOP/I_PCI_READ_FIFO_PCI_FIFO_RAM_5
+spaceObject -fixSide left -space 15
+fit
+zoomBox 81.95300 158.06900 616.70900 685.03300
+uiSetTool select
+deselectAll
+selectInst I_PCI_TOP/I_PCI_READ_FIFO_PCI_FIFO_RAM_4
+selectInst I_PCI_TOP/I_PCI_READ_FIFO_PCI_FIFO_RAM_7
+spaceObject -fixSide top -space 15
+deselectAll
+selectInst I_SDRAM_TOP/U208
+deselectAll
+selectInst I_SDRAM_TOP/I_SDRAM_READ_FIFO_SD_FIFO_CTL_U1_this_addr_g_int_reg_3_
+deselectAll
+selectInst I_PCI_TOP/I_PCI_READ_FIFO_PCI_FIFO_RAM_6
+selectInst I_PCI_TOP/I_PCI_READ_FIFO_PCI_FIFO_RAM_7
+spaceObject -fixSide left -space 15
+deselectAll
+selectInst I_PCI_TOP/I_PCI_WRITE_FIFO_PCI_FIFO_RAM_7
+selectInst I_PCI_TOP/I_PCI_READ_FIFO_PCI_FIFO_RAM_4
+spaceObject -fixSide top -space 15
+deselectAll
+selectInst I_PCI_TOP/I_PCI_READ_FIFO_PCI_FIFO_RAM_7
+selectInst I_PCI_TOP/I_PCI_READ_FIFO_PCI_FIFO_RAM_4
+spaceObject -fixSide top -space 15
+fit
+uiSetTool select
+deselectAll
+selectInst I_CONTEXT_MEM/I_CONTEXT_RAM_0_4
+deselectAll
+selectInst I_CONTEXT_MEM/I_CONTEXT_RAM_1_4
+selectInst I_CONTEXT_MEM/I_CONTEXT_RAM_0_4
+alignObject -side left
+spaceObject -fixSide top -space 15
+deselectAll
+selectInst I_CONTEXT_MEM/I_CONTEXT_RAM_2_4
+selectInst I_CONTEXT_MEM/I_CONTEXT_RAM_1_4
+alignObject -side left
+spaceObject -fixSide top -space 15
+deselectAll
+selectInst I_CONTEXT_MEM/I_CONTEXT_RAM_3_4
+selectInst I_CONTEXT_MEM/I_CONTEXT_RAM_2_4
+alignObject -side left
+spaceObject -fixSide top -space 15
+deselectAll
+selectInst I_CONTEXT_MEM/I_CONTEXT_RAM_0_3
+selectInst I_CONTEXT_MEM/I_CONTEXT_RAM_0_4
+alignObject -side top
+undo
+alignObject -side bottom
+spaceObject -fixSide right -space 15
+deselectAll
+selectInst I_CONTEXT_MEM/I_CONTEXT_RAM_1_3
+selectInst I_CONTEXT_MEM/I_CONTEXT_RAM_1_4
+alignObject -side bottom
+spaceObject -fixSide right -space 15
+deselectAll
+selectInst I_CONTEXT_MEM/I_CONTEXT_RAM_2_3
+selectInst I_CONTEXT_MEM/I_CONTEXT_RAM_2_4
+alignObject -side bottom
+spaceObject -fixSide right -space 15
+deselectAll
+selectInst I_CONTEXT_MEM/I_CONTEXT_RAM_3_4
+selectInst I_CONTEXT_MEM/I_CONTEXT_RAM_3_3
+alignObject -side bottom
+spaceObject -fixSide right -space 15
+deselectAll
+selectInst I_SDRAM_TOP/I_SDRAM_IF/U6529
+deselectAll
+selectInst I_CONTEXT_MEM/I_CONTEXT_RAM_0_1
+selectInst I_CONTEXT_MEM/I_CONTEXT_RAM_0_3
+alignObject -side bottom
+spaceObject -fixSide right -space 15
+deselectAll
+selectInst I_CONTEXT_MEM/I_CONTEXT_RAM_1_3
+selectInst I_CONTEXT_MEM/I_CONTEXT_RAM_1_2
+spaceObject -fixSide right -space 15
+alignObject -side bottom
+deselectAll
+selectInst I_CONTEXT_MEM/I_CONTEXT_RAM_2_2
+selectInst I_CONTEXT_MEM/I_CONTEXT_RAM_2_3
+alignObject -side bottom
+spaceObject -fixSide right -space 15
+deselectAll
+selectInst I_CONTEXT_MEM/I_CONTEXT_RAM_3_2
+selectInst I_CONTEXT_MEM/I_CONTEXT_RAM_3_3
+alignObject -side bottom
+spaceObject -fixSide right -space 15
+deselectAll
+selectInst I_CONTEXT_MEM/I_CONTEXT_RAM_1_1
+selectInst I_CONTEXT_MEM/I_CONTEXT_RAM_0_1
+alignObject -side bottom
+spaceObject -fixSide right -space 15
+deselectAll
+selectInst I_CONTEXT_MEM/I_CONTEXT_RAM_2_1
+selectInst I_CONTEXT_MEM/I_CONTEXT_RAM_1_2
+alignObject -side bottom
+undo
+alignObject -side top
+spaceObject -fixSide right -space 15
+deselectAll
+selectInst I_CONTEXT_MEM/I_CONTEXT_RAM_0_2
+selectInst I_CONTEXT_MEM/I_CONTEXT_RAM_2_2
+alignObject -side bottom
+spaceObject -fixSide right -space 15
+deselectAll
+selectInst I_CONTEXT_MEM/I_CONTEXT_RAM_3_1
+selectInst I_CONTEXT_MEM/I_CONTEXT_RAM_3_2
+alignObject -side bottom
+undo
+alignObject -side top
+spaceObject -fixSide right -space 15
+deselectAll
+selectInst I_SDRAM_TOP/I_SDRAM_READ_FIFO_SD_FIFO_RAM_0
+deselectAll
+selectInst I_SDRAM_TOP/I_SDRAM_WRITE_FIFO_SD_FIFO_RAM_1
+deselectAll
+selectInst I_SDRAM_TOP/I_SDRAM_READ_FIFO_SD_FIFO_RAM_0
+selectInst I_SDRAM_TOP/I_SDRAM_WRITE_FIFO_SD_FIFO_RAM_1
+spaceObject -fixSide left -space 15
+deselectAll
+selectInst I_SDRAM_TOP/I_SDRAM_WRITE_FIFO_SD_FIFO_RAM_0
+selectInst I_SDRAM_TOP/I_SDRAM_READ_FIFO_SD_FIFO_RAM_0
+alignObject -side right
+spaceObject -fixSide bottom -space 15
+deselectAll
+selectInst I_SDRAM_TOP/I_SDRAM_WRITE_FIFO_SD_FIFO_RAM_1
+selectInst I_SDRAM_TOP/I_SDRAM_READ_FIFO_SD_FIFO_RAM_1
+alignObject -side right
+spaceObject -fixSide bottom -space 15
+deselectAll
+selectInst I_SDRAM_TOP/I_SDRAM_IF/FE_OFC144_FE_DBTN151_n63
+uiSetTool select
+deselectAll
+selectInst I_RISC_CORE/I_REG_FILE_REG_FILE_D_RAM
+undo
+deselectAll
+selectInst I_RISC_CORE/I_REG_FILE_REG_FILE_C_RAM
+selectInst I_RISC_CORE/I_REG_FILE_REG_FILE_D_RAM
+alignObject -side left
+spaceObject -fixSide bottom -space 15
+deselectAll
+selectInst I_RISC_CORE/I_REG_FILE_REG_FILE_B_RAM
+selectInst I_RISC_CORE/I_REG_FILE_REG_FILE_C_RAM
+alignObject -side top
+spaceObject -fixSide right -space 15
+deselectAll
+selectInst I_RISC_CORE/I_REG_FILE_REG_FILE_A_RAM
+selectInst I_RISC_CORE/I_REG_FILE_REG_FILE_D_RAM
+alignObject -side top
+spaceObject -fixSide right -space 15
+deselectAll
+saveDesign -cellview {lab3 ORCA_TOP layout}
+deselectAll
+select_obj [ get_ports * ]
+select_obj {port:ORCA_TOP/sdram_clk port:ORCA_TOP/sys_2x_clk port:ORCA_TOP/shutdown port:ORCA_TOP/test_mode {port:ORCA_TOP/test_si[5]} {port:ORCA_TOP/test_si[4]} {port:ORCA_TOP/test_si[3]} {port:ORCA_TOP/test_si[2]} {port:ORCA_TOP/test_si[1]} {port:ORCA_TOP/test_si[0]} {port:ORCA_TOP/test_so[5]} {port:ORCA_TOP/test_so[4]} {port:ORCA_TOP/test_so[3]} {port:ORCA_TOP/test_so[2]} {port:ORCA_TOP/test_so[1]} {port:ORCA_TOP/test_so[0]} port:ORCA_TOP/scan_enable port:ORCA_TOP/ate_clk port:ORCA_TOP/occ_bypass port:ORCA_TOP/occ_reset port:ORCA_TOP/pclk port:ORCA_TOP/prst_n port:ORCA_TOP/pidsel port:ORCA_TOP/pgnt_n {port:ORCA_TOP/pad_in[31]} {port:ORCA_TOP/pad_in[30]} {port:ORCA_TOP/pad_in[29]} {port:ORCA_TOP/pad_in[28]} {port:ORCA_TOP/pad_in[27]} {port:ORCA_TOP/pad_in[26]} {port:ORCA_TOP/pad_in[25]} {port:ORCA_TOP/pad_in[24]} {port:ORCA_TOP/pad_in[23]} {port:ORCA_TOP/pad_in[22]} {port:ORCA_TOP/pad_in[21]} {port:ORCA_TOP/pad_in[20]} {port:ORCA_TOP/pad_in[19]} {port:ORCA_TOP/pad_in[18]} {port:ORCA_TOP/pad_in[17]} {port:ORCA_TOP/pad_in[16]} {port:ORCA_TOP/pad_in[15]} {port:ORCA_TOP/pad_in[14]} {port:ORCA_TOP/pad_in[13]} {port:ORCA_TOP/pad_in[12]} {port:ORCA_TOP/pad_in[11]} {port:ORCA_TOP/pad_in[10]} {port:ORCA_TOP/pad_in[9]} {port:ORCA_TOP/pad_in[8]} {port:ORCA_TOP/pad_in[7]} {port:ORCA_TOP/pad_in[6]} {port:ORCA_TOP/pad_in[5]} {port:ORCA_TOP/pad_in[4]} {port:ORCA_TOP/pad_in[3]} {port:ORCA_TOP/pad_in[2]} {port:ORCA_TOP/pad_in[1]} {port:ORCA_TOP/pad_in[0]} {port:ORCA_TOP/pad_out[31]} {port:ORCA_TOP/pad_out[30]} {port:ORCA_TOP/pad_out[29]} {port:ORCA_TOP/pad_out[28]} {port:ORCA_TOP/pad_out[27]} {port:ORCA_TOP/pad_out[26]} {port:ORCA_TOP/pad_out[25]} {port:ORCA_TOP/pad_out[24]} {port:ORCA_TOP/pad_out[23]} {port:ORCA_TOP/pad_out[22]} {port:ORCA_TOP/pad_out[21]} {port:ORCA_TOP/pad_out[20]} {port:ORCA_TOP/pad_out[19]} {port:ORCA_TOP/pad_out[18]} {port:ORCA_TOP/pad_out[17]} {port:ORCA_TOP/pad_out[16]} {port:ORCA_TOP/pad_out[15]} {port:ORCA_TOP/pad_out[14]} {port:ORCA_TOP/pad_out[13]} {port:ORCA_TOP/pad_out[12]} {port:ORCA_TOP/pad_out[11]} {port:ORCA_TOP/pad_out[10]} {port:ORCA_TOP/pad_out[9]} {port:ORCA_TOP/pad_out[8]} {port:ORCA_TOP/pad_out[7]} {port:ORCA_TOP/pad_out[6]} {port:ORCA_TOP/pad_out[5]} {port:ORCA_TOP/pad_out[4]} {port:ORCA_TOP/pad_out[3]} {port:ORCA_TOP/pad_out[2]} {port:ORCA_TOP/pad_out[1]} {port:ORCA_TOP/pad_out[0]} port:ORCA_TOP/pad_en port:ORCA_TOP/ppar_in port:ORCA_TOP/ppar_out port:ORCA_TOP/ppar_en {port:ORCA_TOP/pc_be_in[3]} {port:ORCA_TOP/pc_be_in[2]} {port:ORCA_TOP/pc_be_in[1]} {port:ORCA_TOP/pc_be_in[0]} {port:ORCA_TOP/pc_be_out[3]} {port:ORCA_TOP/pc_be_out[2]} {port:ORCA_TOP/pc_be_out[1]} {port:ORCA_TOP/pc_be_out[0]} port:ORCA_TOP/pc_be_en port:ORCA_TOP/pframe_n_in port:ORCA_TOP/pframe_n_out port:ORCA_TOP/pframe_n_en port:ORCA_TOP/ptrdy_n_in port:ORCA_TOP/ptrdy_n_out port:ORCA_TOP/ptrdy_n_en port:ORCA_TOP/pirdy_n_in port:ORCA_TOP/pirdy_n_out port:ORCA_TOP/pirdy_n_en port:ORCA_TOP/pdevsel_n_in port:ORCA_TOP/pdevsel_n_out port:ORCA_TOP/pdevsel_n_en port:ORCA_TOP/pstop_n_in port:ORCA_TOP/pstop_n_out port:ORCA_TOP/pstop_n_en port:ORCA_TOP/pperr_n_in port:ORCA_TOP/pperr_n_out port:ORCA_TOP/pperr_n_en port:ORCA_TOP/pserr_n_in port:ORCA_TOP/pserr_n_out port:ORCA_TOP/pserr_n_en port:ORCA_TOP/preq_n port:ORCA_TOP/pack_n port:ORCA_TOP/pm66en {port:ORCA_TOP/sd_A[9]} {port:ORCA_TOP/sd_A[8]} {port:ORCA_TOP/sd_A[7]} {port:ORCA_TOP/sd_A[6]} {port:ORCA_TOP/sd_A[5]} {port:ORCA_TOP/sd_A[4]} {port:ORCA_TOP/sd_A[3]} {port:ORCA_TOP/sd_A[2]} {port:ORCA_TOP/sd_A[1]} {port:ORCA_TOP/sd_A[0]} port:ORCA_TOP/sd_CK port:ORCA_TOP/sd_CKn port:ORCA_TOP/sd_LD port:ORCA_TOP/sd_RW {port:ORCA_TOP/sd_BWS[1]} {port:ORCA_TOP/sd_BWS[0]} {port:ORCA_TOP/sd_DQ_in[31]} {port:ORCA_TOP/sd_DQ_in[30]} {port:ORCA_TOP/sd_DQ_in[29]} {port:ORCA_TOP/sd_DQ_in[28]} {port:ORCA_TOP/sd_DQ_in[27]} {port:ORCA_TOP/sd_DQ_in[26]} {port:ORCA_TOP/sd_DQ_in[25]} {port:ORCA_TOP/sd_DQ_in[24]} {port:ORCA_TOP/sd_DQ_in[23]} {port:ORCA_TOP/sd_DQ_in[22]} {port:ORCA_TOP/sd_DQ_in[21]} {port:ORCA_TOP/sd_DQ_in[20]} {port:ORCA_TOP/sd_DQ_in[19]} {port:ORCA_TOP/sd_DQ_in[18]} {port:ORCA_TOP/sd_DQ_in[17]} {port:ORCA_TOP/sd_DQ_in[16]} {port:ORCA_TOP/sd_DQ_in[15]} {port:ORCA_TOP/sd_DQ_in[14]} {port:ORCA_TOP/sd_DQ_in[13]} {port:ORCA_TOP/sd_DQ_in[12]} {port:ORCA_TOP/sd_DQ_in[11]} {port:ORCA_TOP/sd_DQ_in[10]} {port:ORCA_TOP/sd_DQ_in[9]} {port:ORCA_TOP/sd_DQ_in[8]} {port:ORCA_TOP/sd_DQ_in[7]} {port:ORCA_TOP/sd_DQ_in[6]} {port:ORCA_TOP/sd_DQ_in[5]} {port:ORCA_TOP/sd_DQ_in[4]} {port:ORCA_TOP/sd_DQ_in[3]} {port:ORCA_TOP/sd_DQ_in[2]} {port:ORCA_TOP/sd_DQ_in[1]} {port:ORCA_TOP/sd_DQ_in[0]} {port:ORCA_TOP/sd_DQ_out[31]} {port:ORCA_TOP/sd_DQ_out[30]} {port:ORCA_TOP/sd_DQ_out[29]} {port:ORCA_TOP/sd_DQ_out[28]} {port:ORCA_TOP/sd_DQ_out[27]} {port:ORCA_TOP/sd_DQ_out[26]} {port:ORCA_TOP/sd_DQ_out[25]} {port:ORCA_TOP/sd_DQ_out[24]} {port:ORCA_TOP/sd_DQ_out[23]} {port:ORCA_TOP/sd_DQ_out[22]} {port:ORCA_TOP/sd_DQ_out[21]} {port:ORCA_TOP/sd_DQ_out[20]} {port:ORCA_TOP/sd_DQ_out[19]} {port:ORCA_TOP/sd_DQ_out[18]} {port:ORCA_TOP/sd_DQ_out[17]} {port:ORCA_TOP/sd_DQ_out[16]} {port:ORCA_TOP/sd_DQ_out[15]} {port:ORCA_TOP/sd_DQ_out[14]} {port:ORCA_TOP/sd_DQ_out[13]} {port:ORCA_TOP/sd_DQ_out[12]} {port:ORCA_TOP/sd_DQ_out[11]} {port:ORCA_TOP/sd_DQ_out[10]} {port:ORCA_TOP/sd_DQ_out[9]} {port:ORCA_TOP/sd_DQ_out[8]} {port:ORCA_TOP/sd_DQ_out[7]} {port:ORCA_TOP/sd_DQ_out[6]} {port:ORCA_TOP/sd_DQ_out[5]} {port:ORCA_TOP/sd_DQ_out[4]} {port:ORCA_TOP/sd_DQ_out[3]} {port:ORCA_TOP/sd_DQ_out[2]} {port:ORCA_TOP/sd_DQ_out[1]} {port:ORCA_TOP/sd_DQ_out[0]} {port:ORCA_TOP/sd_DQ_en[31]} {port:ORCA_TOP/sd_DQ_en[30]} {port:ORCA_TOP/sd_DQ_en[29]} {port:ORCA_TOP/sd_DQ_en[28]} {port:ORCA_TOP/sd_DQ_en[27]} {port:ORCA_TOP/sd_DQ_en[26]} {port:ORCA_TOP/sd_DQ_en[25]} {port:ORCA_TOP/sd_DQ_en[24]} {port:ORCA_TOP/sd_DQ_en[23]} {port:ORCA_TOP/sd_DQ_en[22]} {port:ORCA_TOP/sd_DQ_en[21]} {port:ORCA_TOP/sd_DQ_en[20]} {port:ORCA_TOP/sd_DQ_en[19]} {port:ORCA_TOP/sd_DQ_en[18]} {port:ORCA_TOP/sd_DQ_en[17]} {port:ORCA_TOP/sd_DQ_en[16]} {port:ORCA_TOP/sd_DQ_en[15]} {port:ORCA_TOP/sd_DQ_en[14]} {port:ORCA_TOP/sd_DQ_en[13]} {port:ORCA_TOP/sd_DQ_en[12]} {port:ORCA_TOP/sd_DQ_en[11]} {port:ORCA_TOP/sd_DQ_en[10]} {port:ORCA_TOP/sd_DQ_en[9]} {port:ORCA_TOP/sd_DQ_en[8]} {port:ORCA_TOP/sd_DQ_en[7]} {port:ORCA_TOP/sd_DQ_en[6]} {port:ORCA_TOP/sd_DQ_en[5]} {port:ORCA_TOP/sd_DQ_en[4]} {port:ORCA_TOP/sd_DQ_en[3]} {port:ORCA_TOP/sd_DQ_en[2]} {port:ORCA_TOP/sd_DQ_en[1]} {port:ORCA_TOP/sd_DQ_en[0]} port:ORCA_TOP/pll_bypass port:ORCA_TOP/pll_reset port:ORCA_TOP/test_si7 port:ORCA_TOP/test_so7}
+select_obj {inst:ORCA_TOP/I_SDRAM_TOP/I_SDRAM_WRITE_FIFO_SD_FIFO_RAM_0 inst:ORCA_TOP/I_SDRAM_TOP/I_SDRAM_WRITE_FIFO_SD_FIFO_RAM_1 inst:ORCA_TOP/I_SDRAM_TOP/I_SDRAM_READ_FIFO_SD_FIFO_RAM_0 inst:ORCA_TOP/I_SDRAM_TOP/I_SDRAM_READ_FIFO_SD_FIFO_RAM_1 inst:ORCA_TOP/I_RISC_CORE/I_REG_FILE_REG_FILE_A_RAM inst:ORCA_TOP/I_RISC_CORE/I_REG_FILE_REG_FILE_B_RAM inst:ORCA_TOP/I_RISC_CORE/I_REG_FILE_REG_FILE_C_RAM inst:ORCA_TOP/I_RISC_CORE/I_REG_FILE_REG_FILE_D_RAM inst:ORCA_TOP/I_CONTEXT_MEM/I_CONTEXT_RAM_3_4 inst:ORCA_TOP/I_CONTEXT_MEM/I_CONTEXT_RAM_3_3 inst:ORCA_TOP/I_CONTEXT_MEM/I_CONTEXT_RAM_3_2 inst:ORCA_TOP/I_CONTEXT_MEM/I_CONTEXT_RAM_3_1 inst:ORCA_TOP/I_CONTEXT_MEM/I_CONTEXT_RAM_2_4 inst:ORCA_TOP/I_CONTEXT_MEM/I_CONTEXT_RAM_2_3 inst:ORCA_TOP/I_CONTEXT_MEM/I_CONTEXT_RAM_2_2 inst:ORCA_TOP/I_CONTEXT_MEM/I_CONTEXT_RAM_2_1 inst:ORCA_TOP/I_CONTEXT_MEM/I_CONTEXT_RAM_1_4 inst:ORCA_TOP/I_CONTEXT_MEM/I_CONTEXT_RAM_1_3 inst:ORCA_TOP/I_CONTEXT_MEM/I_CONTEXT_RAM_1_2 inst:ORCA_TOP/I_CONTEXT_MEM/I_CONTEXT_RAM_1_1 inst:ORCA_TOP/I_CONTEXT_MEM/I_CONTEXT_RAM_0_4 inst:ORCA_TOP/I_CONTEXT_MEM/I_CONTEXT_RAM_0_3 inst:ORCA_TOP/I_CONTEXT_MEM/I_CONTEXT_RAM_0_2 inst:ORCA_TOP/I_CONTEXT_MEM/I_CONTEXT_RAM_0_1 inst:ORCA_TOP/I_PCI_TOP/I_PCI_WRITE_FIFO_PCI_FIFO_RAM_1 inst:ORCA_TOP/I_PCI_TOP/I_PCI_WRITE_FIFO_PCI_FIFO_RAM_2 inst:ORCA_TOP/I_PCI_TOP/I_PCI_WRITE_FIFO_PCI_FIFO_RAM_3 inst:ORCA_TOP/I_PCI_TOP/I_PCI_WRITE_FIFO_PCI_FIFO_RAM_4 inst:ORCA_TOP/I_PCI_TOP/I_PCI_WRITE_FIFO_PCI_FIFO_RAM_5 inst:ORCA_TOP/I_PCI_TOP/I_PCI_WRITE_FIFO_PCI_FIFO_RAM_6 inst:ORCA_TOP/I_PCI_TOP/I_PCI_WRITE_FIFO_PCI_FIFO_RAM_7 inst:ORCA_TOP/I_PCI_TOP/I_PCI_WRITE_FIFO_PCI_FIFO_RAM_8 inst:ORCA_TOP/I_PCI_TOP/I_PCI_READ_FIFO_PCI_FIFO_RAM_1 inst:ORCA_TOP/I_PCI_TOP/I_PCI_READ_FIFO_PCI_FIFO_RAM_2 inst:ORCA_TOP/I_PCI_TOP/I_PCI_READ_FIFO_PCI_FIFO_RAM_3 inst:ORCA_TOP/I_PCI_TOP/I_PCI_READ_FIFO_PCI_FIFO_RAM_4 inst:ORCA_TOP/I_PCI_TOP/I_PCI_READ_FIFO_PCI_FIFO_RAM_5 inst:ORCA_TOP/I_PCI_TOP/I_PCI_READ_FIFO_PCI_FIFO_RAM_6 inst:ORCA_TOP/I_PCI_TOP/I_PCI_READ_FIFO_PCI_FIFO_RAM_7 inst:ORCA_TOP/I_PCI_TOP/I_PCI_READ_FIFO_PCI_FIFO_RAM_8}
+select_obj {}
+select_obj {place_blockage:0x7fdc1d1358f8 place_blockage:0x7fdc1d1358d0 place_blockage:0x7fdc1d1358a8 place_blockage:0x7fdc1d135880 place_blockage:0x7fdc1d135858 place_blockage:0x7fdc1d135830 place_blockage:0x7fdc1d135808 place_blockage:0x7fdc1d1357e0 place_blockage:0x7fdc1d1357b8 place_blockage:0x7fdc1d135790 place_blockage:0x7fdc1d135768 place_blockage:0x7fdc1d135740 place_blockage:0x7fdc1d135718 place_blockage:0x7fdc1d1356f0 place_blockage:0x7fdc1d1356c8 place_blockage:0x7fdc1d1356a0 place_blockage:0x7fdc1d135678 place_blockage:0x7fdc1d135650 place_blockage:0x7fdc1d135628 place_blockage:0x7fdc1d135600 place_blockage:0x7fdc1d1355d8 place_blockage:0x7fdc1d1355b0 place_blockage:0x7fdc1d135588 place_blockage:0x7fdc1d135560 place_blockage:0x7fdc1d135538 place_blockage:0x7fdc1d135510 place_blockage:0x7fdc1d1354e8 place_blockage:0x7fdc1d1354c0 place_blockage:0x7fdc1d135498 place_blockage:0x7fdc1d135470 place_blockage:0x7fdc1d135448 place_blockage:0x7fdc1d135420 place_blockage:0x7fdc1d1353f8 place_blockage:0x7fdc1d1353d0 place_blockage:0x7fdc1d1353a8 place_blockage:0x7fdc1d135380 place_blockage:0x7fdc1d135358 place_blockage:0x7fdc1d135330 place_blockage:0x7fdc1d135308 place_blockage:0x7fdc1d1352e0 place_blockage:0x7fdc1d1352b8 place_blockage:0x7fdc1d135290 place_blockage:0x7fdc1d135268 place_blockage:0x7fdc1d135240 place_blockage:0x7fdc1d135218 place_blockage:0x7fdc1d1351f0 place_blockage:0x7fdc1d1351c8 place_blockage:0x7fdc1d1351a0 place_blockage:0x7fdc1d135178 place_blockage:0x7fdc1d135150 place_blockage:0x7fdc1d135128 place_blockage:0x7fdc1d135100 place_blockage:0x7fdc1d1350d8 place_blockage:0x7fdc1d1350b0 place_blockage:0x7fdc1d135088 place_blockage:0x7fdc1d135060 place_blockage:0x7fdc1d135038 place_blockage:0x7fdc1d135010 place_blockage:0x7fdc1d134fe8 place_blockage:0x7fdc1d134fc0 place_blockage:0x7fdc1d134f98 place_blockage:0x7fdc1d134f70 place_blockage:0x7fdc1d134f48 place_blockage:0x7fdc1d134f20 place_blockage:0x7fdc1d134ef8 place_blockage:0x7fdc1d134ed0 place_blockage:0x7fdc1d134ea8 place_blockage:0x7fdc1d134e80 place_blockage:0x7fdc1d134e58 place_blockage:0x7fdc1d134e30 place_blockage:0x7fdc1d134e08 place_blockage:0x7fdc1d134de0 place_blockage:0x7fdc1d134db8 place_blockage:0x7fdc1d134d90 place_blockage:0x7fdc1d134d68 place_blockage:0x7fdc1d134d40 place_blockage:0x7fdc1d134d18 place_blockage:0x7fdc1d134cf0 place_blockage:0x7fdc1d134cc8 place_blockage:0x7fdc1d134ca0 place_blockage:0x7fdc1d134c78 place_blockage:0x7fdc1d134c50 place_blockage:0x7fdc1d134c28 place_blockage:0x7fdc1d134c00 place_blockage:0x7fdc1d134bd8 place_blockage:0x7fdc1d134bb0 place_blockage:0x7fdc1d134b88 place_blockage:0x7fdc1d134b60 place_blockage:0x7fdc1d134b38 place_blockage:0x7fdc1d134b10 place_blockage:0x7fdc1d134ae8 place_blockage:0x7fdc1d134ac0 place_blockage:0x7fdc1d134a98 place_blockage:0x7fdc1d134a70 place_blockage:0x7fdc1d134a48 place_blockage:0x7fdc1d134a20 place_blockage:0x7fdc1d1349f8 place_blockage:0x7fdc1d1349d0 place_blockage:0x7fdc1d1349a8 place_blockage:0x7fdc1d134980 place_blockage:0x7fdc1d134958 place_blockage:0x7fdc1d134930 place_blockage:0x7fdc1d134908 place_blockage:0x7fdc1d1348e0 place_blockage:0x7fdc1d1348b8 place_blockage:0x7fdc1d134890 place_blockage:0x7fdc1d134868 place_blockage:0x7fdc1d134840 place_blockage:0x7fdc1d134818 place_blockage:0x7fdc1d1347f0 place_blockage:0x7fdc1d1347c8 place_blockage:0x7fdc1d1347a0 place_blockage:0x7fdc1d134778 place_blockage:0x7fdc1d134750 place_blockage:0x7fdc1d134728 place_blockage:0x7fdc1d134700 place_blockage:0x7fdc1d1346d8 place_blockage:0x7fdc1d1346b0 place_blockage:0x7fdc1d134688 place_blockage:0x7fdc1d134660 place_blockage:0x7fdc1d134638 place_blockage:0x7fdc1d134610 place_blockage:0x7fdc1d1345e8 place_blockage:0x7fdc1d1345c0 place_blockage:0x7fdc1d134598 place_blockage:0x7fdc1d134570 place_blockage:0x7fdc1d134548 place_blockage:0x7fdc1d134520 place_blockage:0x7fdc1d1344f8 place_blockage:0x7fdc1d1344d0 place_blockage:0x7fdc1d1344a8 place_blockage:0x7fdc1d134480 place_blockage:0x7fdc1d134458 place_blockage:0x7fdc1d134430 place_blockage:0x7fdc1d134408 place_blockage:0x7fdc1d1343e0 place_blockage:0x7fdc1d1343b8 place_blockage:0x7fdc1d134390 place_blockage:0x7fdc1d134368 place_blockage:0x7fdc1d134340 place_blockage:0x7fdc1d134318 place_blockage:0x7fdc1d1342f0 place_blockage:0x7fdc1d1342c8 place_blockage:0x7fdc1d1342a0 place_blockage:0x7fdc1d134278 place_blockage:0x7fdc1d134250 place_blockage:0x7fdc1d134228 place_blockage:0x7fdc1d134200 place_blockage:0x7fdc1d1341d8 place_blockage:0x7fdc1d1341b0 place_blockage:0x7fdc1d134188 place_blockage:0x7fdc1d134160 place_blockage:0x7fdc1d134138 place_blockage:0x7fdc1d134110 place_blockage:0x7fdc1d1340e8 place_blockage:0x7fdc1d1340c0 place_blockage:0x7fdc1d134098 place_blockage:0x7fdc1d134070 place_blockage:0x7fdc1d134048 place_blockage:0x7fdc1d134020}
+defOut -selected ../outputs/ORCA_TOP.floorplan.innovus.macros.lab3.def
+createPlaceBlockage -allMacro -excludeFlops -name place_blockage_partial -type partial -density
+createPlaceBlockage -allMacro -excludeFlops -name place_blockage_partial -type partial -density 20 -outerRingBySide {14 14 14 14}
+setPlaceMode -place_design_floorplan_mode true
+setPlaceMode -place_global_max_density 0.75
+setPlaceMode -fp true
+place_design -noPrePlaceOpt
+globalRoute
+o
+o
